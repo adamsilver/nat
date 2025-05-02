@@ -1,0 +1,13 @@
+{
+  "scripts": {
+    "dev": "nowprototypeit dev || npx -y nowprototypeit@latest validate-kit dev $?",
+    "serve": "nowprototypeit serve || npx -y nowprototypeit@latest validate-kit serve $?",
+    "start": "nowprototypeit start || npx -y nowprototypeit@latest validate-kit start $?"
+  },
+  "dependencies": {
+    "@govuk-prototype-kit/common-templates": "2.0.1",
+    "@nowprototypeit/govuk-frontend-adaptor": "0.0.8",
+    "govuk-frontend": "5.10.0",
+    "nowprototypeit": "0.11.4"
+  }
+}
