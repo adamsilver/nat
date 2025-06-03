@@ -1,0 +1,208 @@
+{% extends "layouts/PINS-post-mvp.html" %}
+
+{% set pageName="Manage interested parties" %}
+
+{% set back = true %}
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+<span class="govuk-caption-l">Appeal 2110166</span>
+  <h1 class="govuk-heading-l">Manage interested parties</h1>
+
+  </div>
+</div>
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <details class="govuk-details" data-module="govuk-details">
+		<summary class="govuk-details__summary">
+		  <span class="govuk-details__summary-text">
+			Filters
+		  </span>
+		</summary>
+		<div class="govuk-details__text">
+		  
+		  {{ govukSelect({
+			id: "contactType",
+			name: "contactType",
+			label: {
+			  text: "Filter by source"
+			},
+			items: [
+			  {
+				value: "all",
+				text: "All",
+				selected: true
+			  },
+			  {
+				value: "appellant",
+				text: "Appellant case"
+			  },
+			  {
+				value: "ipcomment",
+				text: "Interested party comments"
+			  },
+			  {
+				value: "lpaq",
+				text: "LPA questionnaire"
+			  },
+			  {
+				value: "manual",
+				text: "Manually added"
+			  }
+			]
+		  }) }}
+		  
+		  <div class="govuk-button-group">
+		  
+		  <button class="govuk-button govuk-button--secondary" data-module="govuk-button"  onclick="myFunction()">
+				Apply
+				</button>
+			  
+			  <a class="govuk-link" href="national-list?list=national">Clear filter</a>
+			  
+		  </div>
+		  
+		</div>
+	  </details>
+
+    	  <script type="text/javascript">
+
+	  function myFunction() {
+		var filterAction = document.getElementById("contactType");
+		var value = filterAction.value;
+
+		if (value == "all") {
+					var divsToShow = document.getElementsByClassName("tableall"); //divsToHide is an array
+    			for(var i = 0; i < divsToShow.length; i++){
+        		divsToShow[i].style.display = "table-row"; // depending on what you're doing
+					} }
+
+		if (value == "ipcomment") {
+					var divsToHide = document.getElementsByClassName("tableall"); //divsToHide is an array
+					var divsToShow = document.getElementsByClassName("ipcomment"); //divsToHide is an array
+    			for(var j = 0; j < divsToHide.length; j++){
+        		divsToHide[j].style.display = "none"; // depending on what you're doing
+					}
+					for(var j = 0; j < divsToShow.length; j++){
+					  divsToShow[j].style.display = "table-row"; // depending on what you're doing
+          } }
+
+		if (value == "lpaq") {
+					var divsToHide = document.getElementsByClassName("tableall"); //divsToHide is an array
+					var divsToShow = document.getElementsByClassName("lpaq"); //divsToHide is an array
+    			for(var j = 0; j < divsToHide.length; j++){
+        		divsToHide[j].style.display = "none"; // depending on what you're doing
+					}
+					for(var j = 0; j < divsToShow.length; j++){
+					  divsToShow[j].style.display = "table-row"; // depending on what you're doing
+          } }
+
+		if (value == "appellant") {
+					var divsToHide = document.getElementsByClassName("tableall"); //divsToHide is an array
+					var divsToShow = document.getElementsByClassName("appellant"); //divsToHide is an array
+    			for(var j = 0; j < divsToHide.length; j++){
+        		divsToHide[j].style.display = "none"; // depending on what you're doing
+					}
+					for(var j = 0; j < divsToShow.length; j++){
+					  divsToShow[j].style.display = "table-row"; // depending on what you're doing
+          } }
+
+ 		if (value == "manual") {
+					var divsToHide = document.getElementsByClassName("tableall"); //divsToHide is an array
+					var divsToShow = document.getElementsByClassName("manual"); //divsToHide is an array
+    			for(var j = 0; j < divsToHide.length; j++){
+        		divsToHide[j].style.display = "none"; // depending on what you're doing
+					}
+					for(var j = 0; j < divsToShow.length; j++){
+					  divsToShow[j].style.display = "table-row"; // depending on what you're doing
+          } }                   
+
+}
+
+	  </script>
+
+<table class="govuk-table">
+  
+  <caption class="govuk-table__caption govuk-table__caption--m govuk-visually-hidden">Interested parties</caption>
+  
+  
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+    
+      <th scope="col" class="govuk-table__header">Name</th>
+    
+      <th scope="col" class="govuk-table__header">Source</th>
+    
+      <th scope="col" class="govuk-table__header">Action</th>
+    
+    </tr>
+  </thead>
+  
+  <tbody class="govuk-table__body">
+ 
+        <tr class="govuk-table__row tableall manual">
+          <td class="govuk-table__cell">Dan Brighthouse</td>
+          <td class="govuk-table__cell">Manually added</td>
+          <td class="govuk-table__cell"><a href="comment-review">Edit</a> | <a href="comment-review">Remove</a></td>
+        </tr>
+
+        <tr class="govuk-table__row tableall appellant">
+          <td class="govuk-table__cell">Cath Fairfield</td>
+          <td class="govuk-table__cell">Appellant case</td>
+          <td class="govuk-table__cell"><a href="comment-review">Edit</a> | <a href="comment-review">Remove</a></td>
+        </tr>
+
+        <tr class="govuk-table__row tableall lpaq">
+          <td class="govuk-table__cell">Robyn Jenkins</td>
+          <td class="govuk-table__cell">LPA questionnaire</td>
+          <td class="govuk-table__cell"><a href="comment-review">Edit</a> | <a href="comment-review">Remove</a></td>
+        </tr>
+ 
+        <tr class="govuk-table__row tableall manual">
+          <td class="govuk-table__cell">Sarah Jones</td>
+          <td class="govuk-table__cell">Manual</td>
+          <td class="govuk-table__cell"><a href="comment-review">Edit</a> | <a href="comment-review">Remove</a></td>
+        </tr>
+
+        <tr class="govuk-table__row tableall appellant">
+          <td class="govuk-table__cell">Violet Kiptum</td>
+          <td class="govuk-table__cell">Appellant case</td>
+          <td class="govuk-table__cell"><a href="comment-review">Edit</a> | <a href="comment-review">Remove</a></td>
+        </tr>		
+ 
+        <tr class="govuk-table__row tableall lpaq">
+          <td class="govuk-table__cell">Phil Roberts</td>
+          <td class="govuk-table__cell">LPA questionnaire</td>
+          <td class="govuk-table__cell"><a href="comment-review">Edit</a> | <a href="comment-review">Remove</a></td>
+        </tr>
+
+        <tr class="govuk-table__row tableall ipcomment">
+          <td class="govuk-table__cell">Ian Smith</td>
+          <td class="govuk-table__cell">IP comment</td>
+          <td class="govuk-table__cell"><a href="comment-review">Edit</a> | <a href="comment-review">Remove</a></td>
+        </tr>
+
+        <tr class="govuk-table__row tableall manual">
+          <td class="govuk-table__cell">Brian Thompson</td>
+          <td class="govuk-table__cell">Manually added</td>
+          <td class="govuk-table__cell"><a href="comment-review">Edit</a> | <a href="comment-review">Remove</a></td>
+        </tr>
+    
+  </tbody>
+</table>
+
+
+
+
+
+  </div>
+</div>
+
+{% endblock %}

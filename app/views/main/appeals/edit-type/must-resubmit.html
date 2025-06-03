@@ -1,0 +1,86 @@
+{% extends "layouts/bo.html" %}
+
+{% set title = "Does the appellant need to resubmit the appeal?" %}
+{% set pageName = title %}
+
+{% set back = true %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <span class="govuk-caption-l">Appeal {{appeal.id}} - update appeal type</span>
+
+    <form method="post">
+
+     {% set deadlineHtml %}
+      {{ govukDateInput({
+        id: "date",
+        fieldset: {
+          legend: {
+            text: "Deadline to resubmit appeal",
+            classes: "govuk-fieldset__legend--s"
+          }
+        },
+        hint: {
+          text: "For example, 31 3 2026"
+        },
+        items: [
+          {
+            name: "editType[resubmitDate][day]",
+            label: "Day",
+            value: data.editType.resubmitDate.day,
+            classes: "govuk-input--width-2"
+          },
+          {
+            name: "editType[resubmitDate][month]",
+            label: "Month",
+            value: data.editType.resubmitDate.month,
+            classes: "govuk-input--width-2"
+          },
+          {
+            name: "editType[resubmitDate][year]",
+            label: "Year",
+            value: data.editType.resubmitDate.year,
+            classes: "govuk-input--width-4"
+          }
+        ]
+      }) }}
+     {% endset %}
+
+      {{ govukRadios({
+        classes: "govuk-radios",
+        name: "editType[mustResubmit]",
+        fieldset: {
+          legend: {
+            text: title,
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        value: data.editType.mustResubmit,
+        items: [
+          {
+            value: "Yes",
+            text: "Yes"
+          },
+          {
+            value: "No",
+            text: "No"
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    </div>
+</div>
+
+
+
+
+
+{% endblock %}

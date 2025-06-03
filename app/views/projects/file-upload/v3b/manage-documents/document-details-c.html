@@ -1,0 +1,173 @@
+{% extends "layouts/PINS.html" %}
+
+{% set pageName="Appellant Case" %}
+
+{% block backLink %}
+  {{ govukBackLink({
+    text: "Back",
+    href: 'index'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+{{ govukErrorSummary({
+          titleText: "There is a problem",
+          errorList: [
+            {
+              text: "The selected file contains a virus. Upload a different version.",
+              href: "#actions"
+            }
+          ]
+        }) }}
+
+	<span class="govuk-caption-l">Manage documents</span>
+	<h1 class="govuk-heading-l">tree-preservation-order-B.pdf</h1>	
+	
+	{{ govukSummaryList({
+	  classes: 'govuk-summary-list',
+	  rows: [
+	    {
+	      key: {
+	        text: "File"
+	      },
+	      value: {
+	        html: '<p>tree-preservation-order-B.pdf</p><p><strong class="govuk-tag govuk-tag--red">Virus detected</strong></p></p>'
+	      }
+	    },{
+	      key: {
+	        text: "Version"
+	      },
+	      value: {
+	        text: '1'
+	      }
+	    },
+	    {
+	      key: {
+	        text: "Date received"
+	      },
+	      value: {
+	        html: "1 Feb 2023"
+	      },
+	      actions: {
+	        items: [
+	          {
+	            href: "file-details",
+	            text: "Change",
+	            visuallyHiddenText: "Tree preservation order extent"
+	          }
+	        ]
+	      }
+	    },
+	    {
+	      key: {
+	        text: "Redaction"
+	      },
+	      value: {
+	        html: "Unredacted"
+	      },
+	      actions: {
+	        items: [
+	          {
+	            href: "file-details",
+	            text: "Change",
+	            visuallyHiddenText: "Tree preservation order extent"
+	          }
+	        ]
+	      }
+	    }
+	  ]
+	}) }}
+	
+		<div class="govuk-button-group" id="actions">
+		
+	{{ govukButton({
+	  text: "Upload new version",
+	  href: "upload-document"
+	}) }}
+  
+   {{ govukButton({
+    text: "Remove document",
+    classes: "govuk-button--secondary",
+    href: "remove-sure"
+  }) }}
+  
+  	  
+</div>
+
+		
+  </div>
+</div>
+
+
+<div class="govuk-grid-row govuk-!-padding-top-6">
+  <div class="govuk-grid-column-full">
+	  
+	  
+	 <details class="govuk-details" data-module="govuk-details">
+	<summary class="govuk-details__summary">
+		<span class="govuk-details__summary-text">
+		  Document history
+		</span>
+	</summary>
+	
+	<div class="govuk-details__text">
+	    
+    {{ govukTable({
+	  captionClasses: "govuk-table__caption--m",
+	  firstCellIsHeader: false,
+	  classes : " govuk-!-font-size-16",
+	  head: [
+	    {
+	      text: "Version"
+	    },
+	    {
+	      text: "Document name"
+	    },
+	    {
+	      text: "Activity"
+	    },
+	    {
+	      text: "Redaction"
+	    },
+	    {
+	      text: "Action"
+	    }
+	  ],
+	  rows: [
+	    [
+	      {
+	        html: "1"
+	      },
+	      {
+	        html: "<p class='govuk-!-font-size-16'>tree-preservation-order-B.pdf</p><p><strong class='govuk-tag govuk-tag--red'>Virus detected</strong></p>"
+	      },
+	      {
+	        html: "<strong>Uploaded:</strong> 09:48, 20 Feb 2023, <br>by Jane Watson"
+	      },
+	      {
+	        text: "Unredacted"
+	      },
+	      {
+	        html: "<a href='#'>Remove</a>"
+	      }
+	    ]
+	  ]
+	}) }}
+	    
+	  </div>
+	</details>
+	  	  
+	  
+
+	</div>
+</div>
+
+
+
+{% endblock %}

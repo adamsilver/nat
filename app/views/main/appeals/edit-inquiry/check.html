@@ -1,0 +1,135 @@
+{% extends "layouts/bo.html" %}
+
+{% set title = "Check details and update inquiry" %}
+{% set pageName = title %}
+
+{% set back = true %}
+
+{% block content %}
+
+  {% set addressHtml %}
+    {{appAddress({ address: v.address })}}
+  {% endset %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <span class="govuk-caption-l">Appeal {{v.appeal.id}}</span>
+      <h1 class="govuk-heading-l">{{title}}</h1>
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Date"
+            },
+            value: {
+              html: v.date | govukDate
+            },
+            actions: {
+              items: [
+                {
+                  href: "/main/appeals/:appealId/edit-inquiry" | replace(':appealId', v.appeal.id),
+                  text: "Change",
+                  visuallyHiddenText: "Date"
+                }
+              ] 
+            }
+          },
+          {
+            key: {
+              text: "Time"
+            },
+            value: {
+              html: v.date | govukTime
+            },
+            actions: {
+              items: [
+                {
+                  href: "/main/appeals/:appealId/edit-inquiry" | replace(':appealId', v.appeal.id),
+                  text: "Change",
+                  visuallyHiddenText: "Time"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Do you know the expected number of days to carry out the inquiry?"
+            },
+            value: {
+              html: v.hasDays
+            },
+            actions: {
+              items: [
+                {
+                  href: "/main/appeals/:appealId/edit-inquiry/days" | replace(':appealId', v.appeal.id),
+                  text: "Change",
+                  visuallyHiddenText: "if you know the expected number of days to carry out the inquiry"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Expected number of days to carry out the inquiry"
+            },
+            value: {
+              html: v.days | days
+            },
+            actions: {
+              items: [
+                {
+                  href: "/main/appeals/:appealId/edit-inquiry/days" | replace(':appealId', v.appeal.id),
+                  text: "Change",
+                  visuallyHiddenText: "Expected number of days to carry out the inquiry"
+                }
+              ]
+            }
+          } if v.hasDays == 'Yes',
+          {
+            key: {
+              text: "Do you know the address of where the inquiry will take place?"
+            },
+            value: {
+              html: v.hasAddress
+            },
+            actions: {
+              items: [
+                {
+                  href: "/main/appeals/:appealId/edit-inquiry/has-address" | replace(':appealId', v.appeal.id),
+                  text: "Change",
+                  visuallyHiddenText: "if you know the inquiry address"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Address"
+            },
+            value: {
+              html: addressHtml
+            },
+            actions: {
+              items: [
+                {
+                  href: "/main/appeals/:appealId/edit-inquiry/address" | replace(':appealId', v.appeal.id),
+                  text: "Change",
+                  visuallyHiddenText: "Inquiry address"
+                }
+              ]
+            }
+          } if v.hasAddress == 'Yes'
+        ]
+      }) }}
+
+      <p>We’ll send an email to the appellant and LPA to tell them about the inquiry.</p>
+
+      <form method="post">
+        {{ govukButton({
+          text: "Update inquiry"
+        }) }}
+      </form>
+
+    </div>
+  </div>
+{% endblock %}

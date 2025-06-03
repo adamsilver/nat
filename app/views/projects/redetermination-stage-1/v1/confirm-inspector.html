@@ -1,0 +1,49 @@
+{% extends "layouts/PINS-post-mvp.html" %}
+
+{% set title = "New inspector" %}
+{% set pageName = title + ' - Planning Inspectorate'%}
+
+{% set back = true %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">Appeal 2114328</span>
+
+      <form method="post">
+
+        {{ govukRadios({
+          name: "inspector",
+          fieldset: {
+            legend: {
+              text: title,
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [
+            {
+              value: "Jan Fisher",
+              text: "Jan Fisher"
+            },
+            {
+              value: "Jambo Twitch",
+              text: "Jambo Twitch"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+
+
+    </div>
+  </div>
+
+{% endblock %}

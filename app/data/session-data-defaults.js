@@ -1,5 +1,12 @@
+const appeals = require('./appeals.json')
+const linkedAppeals = require('./linked-appeals.json')
+
 module.exports = {
-
-  // Insert values here
-
+  appeals,
+  linkedAppeals,
+  sort: 'Due date',
+  filters: {
+    caseOfficers: ['Tony Stark']
+  },
+  userType: 'caseOfficer'
 }

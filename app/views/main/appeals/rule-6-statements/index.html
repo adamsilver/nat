@@ -1,0 +1,66 @@
+{% extends "layouts/bo.html" %}
+
+{% set title = "Rule 6 statements (:total)" | replace(':total', rule6Statements.length) %}
+{% set pageName = title %}
+
+{% block beforeContent %}
+  {{ govukBreadcrumbs({
+    classes: 'govuk-!-margin-top-4 govuk-!-margin-bottom-0',
+      items: [
+        {
+          text: appeal.id,
+          href: "/main/appeals/:appealId" | replace(':appealId', appeal.id)
+        },
+        {
+          text: 'Rule 6 statements'
+        }
+      ]
+    }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ govukNotificationBanner({
+        type: "success",
+        text: flash
+      }) if flash.length }}
+
+      <span class="govuk-caption-l">Appeal {{appeal.id}}</span>
+      <h1 class="govuk-heading-l">{{title}}</h1>
+
+      {% if rule6Statements.length %}
+         <div class="app-list">
+          {% for item in rule6Statements %}
+            <div class="app-list__item">
+              {% if item.organisationName %}
+                <h2 class="govuk-heading-s govuk-!-margin-bottom-1">
+                  <a class="govuk-link--no-visited-state" href="/main/appeals/{{appeal.id}}/rule-6-statements/{{item.id}}">
+                    {{item.organisationName}}
+                  </a>
+                </h2>
+                <p class="govuk-!-margin-bottom-0">{{item.firstName}} {{item.lastName}}</p>
+              {% else %}
+                <h2 class="govuk-heading-s govuk-!-margin-bottom-0">
+                  <a class="govuk-link--no-visited-state" href="/main/appeals/{{appeal.id}}/rule-6-statements/{{item.id}}">
+                    {{item.firstName}} {{item.lastName}}
+                  </a>
+                </h2>
+              {% endif %}
+              <div class="app-list__tag">
+                {{ govukTag({
+                  text: item.statement.status,
+                  classes: item.statement.status | rule6StatementStatusColour
+                }) }}
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      {% else %}
+        <p>There are no results.</p>
+      {% endif %}
+
+    </div>
+  </div>
+
+{% endblock %}

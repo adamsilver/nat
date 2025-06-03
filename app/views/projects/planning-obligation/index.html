@@ -1,0 +1,164 @@
+{% extends "layouts/PINS-Simple-post-mvp.html" %}
+
+{% set pageName="Case details" %}
+
+{% set back = false %}
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <span class="govuk-caption-l">Appeal a planning decision</span>
+    <h1 class="govuk-heading-l">
+      Review planning obligation
+    </h1>
+
+    {{ govukTable({
+      captionClasses: "govuk-table__caption--m",
+      firstCellIsHeader: true,
+      rows: [
+        [
+          {
+            text: "Typical user"
+          },
+          {
+            text: "Case officers"
+          }
+        ],
+        [
+          {
+            text: "User story"
+          },
+          {
+            html: "<ul class='govuk-list govuk-list--bullet'><li>
+              As a Case Officer,<br>
+              I can review the existing Planning Obligation document, I can make sure it is dated, and signed,<br>
+              So that the appeal has a proposed way to overcome the LPA’s objections to proposals where planning conditions may not be appropriate.
+            </li></ul>"
+          }
+        ],
+        [
+          {
+            text: "Jira ticket"
+          },
+          {
+            html: "<a href='https://pins-ds.atlassian.net/browse/BDPAR-18' class='govuk-link'>BDPAR-18 (versions 1 to 3)</a>
+               <br><a href='https://pins-ds.atlassian.net/browse/A2-984' class='govuk-link'>A2-984</a>"
+          }
+        ]
+      ]
+    }) }}
+
+    <h2 class="govuk-heading-m">
+      Version 4
+      {{ govukTag({
+          text: "In progress",
+          classes: "govuk-!-margin-left-2 govuk-tag--yellow"
+        })}}
+    </h2>
+
+    <p class="govuk-body">
+      Features:
+    </p>
+    <ul class='govuk-list govuk-list--bullet'>
+      <li>alignment with IP comments and statements journeys</li>
+      <li>combine the review outcome onto the documents view</li>
+      <li>options should be valid and invalid not complete and incomplete</li>
+      <li>add a check your answers page for both valid and invalid</li>
+      <li>add redacted status of document to check your answers page</li>
+      <li>manage a file should use the existing journey from the review page</li>
+    </ul>
+
+    <a href="v4/case-details?S106status=received" role="button" draggable="false" class="govuk-button govuk-button--start" data-module="govuk-button">
+      View prototype
+      <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewBox="0 0 33 40" aria-hidden="true" focusable="false">
+        <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z" />
+      </svg></a>
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+    <h2 class="govuk-heading-m">
+      Version 3
+      {{ govukTag({
+          text: "In progress",
+          classes: "govuk-!-margin-left-2 govuk-tag--yellow"
+        })}}
+    </h2>
+
+    <p class="govuk-body">
+      Features:
+    </p>
+    <ul class='govuk-list govuk-list--bullet'>
+      <li>alignment with design patterns</li>
+      <li>scenario 2: S106 received via Front Office</li>
+     <li>date input hint is the 28th of previous month</li>
+    </ul>
+
+    <a href="v3/case?S106status=received" role="button" draggable="false" class="govuk-button govuk-button--start" data-module="govuk-button">
+      View prototype
+      <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewBox="0 0 33 40" aria-hidden="true" focusable="false">
+        <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z" />
+      </svg></a>
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+
+    <h2 class="govuk-heading-m">Version 2
+
+      {{govukTag({
+          text: "In progress",
+          classes: "govuk-!-margin-left-2 govuk-tag--yellow"
+        })}}
+
+    </h2>
+
+    <p class="govuk-body">
+      Features:
+    </p>
+
+    <ul class='govuk-list govuk-list--bullet'>
+      <li>scenario 1 - Received via email. Updated 23rd April</li>
+      <li>date input hint is the 28th of previous month</li>
+    </ul>
+
+    <a href="v2/case" role="button" draggable="false" class="govuk-button govuk-button--start" data-module="govuk-button">
+      View prototype
+      <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewBox="0 0 33 40" aria-hidden="true" focusable="false">
+        <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z" />
+      </svg>
+    </a>
+
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+    <h2 class="govuk-heading-m">Version 1
+      {{govukTag({
+          text: "In progress",
+          classes: "govuk-!-margin-left-2 govuk-tag--yellow"
+        })
+      }}
+    </h2>
+
+    <p class="govuk-body">
+      Features:
+    </p>
+
+    <ul class='govuk-list govuk-list--bullet'>
+      <li>
+        upload S106 obligation for review
+      </li>
+    </ul>
+
+    <a href="v1/case" role="button" draggable="false" class="govuk-button govuk-button--start" data-module="govuk-button">
+      View prototype
+      <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewBox="0 0 33 40" aria-hidden="true" focusable="false">
+        <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z" />
+      </svg></a>
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+    </div>
+  </div>
+
+{% endblock %}

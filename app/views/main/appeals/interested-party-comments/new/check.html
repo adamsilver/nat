@@ -1,0 +1,115 @@
+{% extends "layouts/bo.html" %}
+
+{% set title = "Check details and add interested party comment" %}
+{% set pageName = title %}
+{% set back = true %}
+
+{% block content %}
+
+  {% set address %}
+    {{appAddress({ address: data.addInterestedPartyComment.address })}}
+  {% endset %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <span class="govuk-caption-l">Appeal {{appeal.id}}</span>
+      <h1 class="govuk-heading-l">{{title}}</h1>
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Name"
+            },
+            value: {
+              text: data.addInterestedPartyComment.firstName + ' ' + data.addInterestedPartyComment.lastName
+            },
+            actions: {
+              items: [
+                {
+                  href: '/main/appeals/:appealId/interested-party-comments/new' | replace(':appealId', appeal.id),
+                  text: "Change",
+                  visuallyHiddenText: "Name"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Email address"
+            },
+            value: {
+              html: data.addInterestedPartyComment.emailAddress
+            },
+            actions: {
+              items: [
+                {
+                  href: '/main/appeals/:appealId/interested-party-comments/new/email-address' | replace(':appealId', appeal.id),
+                  text: "Change",
+                  visuallyHiddenText: "Email address"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Did the interested party provide an address?"
+            },
+            value: {
+              html: data.addInterestedPartyComment.hasAddress
+            },
+            actions: {
+              items: [
+                {
+                  href: '/main/appeals/:appealId/interested-party-comments/new/has-address' | replace(':appealId', appeal.id),
+                  text: "Change",
+                  visuallyHiddenText: "if the interested party provided an address"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Interested party address"
+            },
+            value: {
+              html: address
+            },
+            actions: {
+              items: [
+                {
+                  href: '/main/appeals/:appealId/interested-party-comments/new/address' | replace(':appealId', appeal.id),
+                  text: "Change",
+                  visuallyHiddenText: "Interested party address"
+                }
+              ]
+            }
+          } if data.addInterestedPartyComment.hasAddress == 'Yes',
+          {
+            key: {
+              text: "Interested party comment"
+            },
+            value: {
+              html: '<a href="#">Comment (JPG, 12MB)</a>'
+            },
+            actions: {
+              items: [
+                {
+                  href: '/main/appeals/:appealId/interested-party-comments/new/form' | replace(':appealId', appeal.id),
+                  text: "Change",
+                  visuallyHiddenText: "Interested party comment"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+      <form method="post">
+        {{ govukButton({
+          text: "Add interested party comment"
+        }) }}
+      </form>
+
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,91 @@
+{% extends "layouts/PINS-post-mvp.html" %}
+
+{% set title = "Affected listed buildings" %}
+{% set pageName = title %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back();"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+
+
+  {{ govukNotificationBanner({
+    html: "<h2 class=\"govuk-heading-m\">"+flash+"</h2>",
+    type: "success",
+    icon: false
+  }) if flash and flash.length }}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+      {# {{ govukNotificationBanner({
+    html: "<h2 class=\"govuk-heading-m\">Affected listed building removed</h2>",
+    type: "success",
+    icon: false
+  }) }} #}
+      <form method="post">
+        <span class="govuk-caption-l">Appeal 2114328</span>
+        <h1 class="govuk-heading-l">{{ title }}</h1>
+
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Listed building 1
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <p class="govuk-!-margin-bottom-0"><a href="#">2234567</a></p>
+                <p class="govuk-!-margin-bottom-0">Grade II*</p>
+                <p class="govuk-!-margin-bottom-0">Rosebank Cottage</p>
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <ul class="govuk-summary-list__actions-list">
+                {# <li class="govuk-summary-list__actions-list-item">
+                  <a class="govuk-link" href="entry">
+                    Change<span class="govuk-visually-hidden"> affected listed building 1</span>
+                  </a>
+                </li> #}
+                <li class="govuk-summary-list__actions-list-item">
+                  <a class="govuk-link" href="delete">
+                    Remove<span class="govuk-visually-hidden"> affected listed building 1</span>
+                  </a>
+                </li>
+              </ul>
+            </dd>
+          </div>
+        </dl>
+
+
+        {# {{ govukRadios({
+          idPrefix: "[report][evidence][addMore]",
+          name: "[report][evidence][addMore]",
+          fieldset: {
+            legend: {
+              text: "Do you want to add another affected listed building?",
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes"
+            },
+            {
+              value: "No",
+              text: "No"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue",
+          href: 'entry'
+        }) }} #}
+      </form>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,149 @@
+{% extends "layouts/PINS-post-mvp.html" %}
+
+{% if data['review-outcome'] == 'Rejected' %}
+  {% set title = "Check details and reject final comments" %}
+{% elseif data['review-outcome'] == 'Accepted with redaction' %}
+  {% set title = "Check details and redact final comments" %}
+{% else %}
+  {% set title = "Check details and accept final comments" %}
+{% endif %}
+
+{% set pageName = title + ' - Planning Inspectorate'%}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <span class="govuk-caption-l">Appeal 2110166</span>
+      <h1 class="govuk-heading-l">{{title}}</h1>
+
+      <form method="post">
+
+        <div class="pins-panel">
+          {{ govukSummaryList({
+            classes: "long-answers govuk-!-margin-bottom-6",
+            rows: [
+            {
+              key: {
+                text: "Final comment"
+              },
+              value: {
+                html: data['original-statement'] or "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut at nunc mi. Donec maximus risus nec interdum vestibulum. Cras laoreet vestibulum bibendum. Cras lectus nulla, efficitur nec fringilla ac, cursus ac lectus.
+                Nam interdum lorem sed lacus feugiat faucibus in vitae tellus. Aliquam erat volutpat. Donec aliquam tincidunt vehicula. Vivamus id elit ac libero rhoncus pulvinar. Etiam blandit posuere elit id rhoncus.
+                Mauris nulla erat, posuere ut nisi vitae, pulvinar gravida arcu."
+              },
+              actions: {
+                items: [
+                  {
+                    href: "select-allocation",
+                    text: "",
+                    visuallyHiddenText: ""
+                  }
+                ]
+              }
+            } if data['review-outcome'] != 'Accepted with redaction',
+            {
+              key: {
+                text: "Unredacted comment"
+              },
+              value: {
+                html: data['original-statement'] or "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut at nunc mi. Donec maximus risus nec interdum vestibulum. Cras laoreet vestibulum bibendum. Cras lectus nulla, efficitur nec fringilla ac, cursus ac lectus.
+                Nam interdum lorem sed lacus feugiat faucibus in vitae tellus. Aliquam erat volutpat. Donec aliquam tincidunt vehicula. Vivamus id elit ac libero rhoncus pulvinar. Etiam blandit posuere elit id rhoncus.
+                Mauris nulla erat, posuere ut nisi vitae, pulvinar gravida arcu."
+              },
+              actions: {
+                items: [
+                  {
+                    href: "select-allocation",
+                    text: "",
+                    visuallyHiddenText: ""
+                  }
+                ]
+              }
+            } if data['review-outcome'] == 'Accepted with redaction',
+            {
+              key: {
+                text: "Redacted comment"
+              },
+              value: {
+                html: data['redacted-statement'] or " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut at nunc mi. Donec maximus risus nec interdum vestibulum. Cras laoreet vestibulum bibendum. Cras lectus nulla, efficitur nec fringilla ac, cursus ac lectus.
+                Nam interdum lorem sed lacus feugiat faucibus in vitae tellus. Aliquam erat volutpat. Donec aliquam tincidunt vehicula. Vivamus id elit ac libero rhoncus pulvinar. Etiam blandit posuere elit id rhoncus.
+                Mauris nulla erat, posuere ut nisi vitae, pulvinar gravida arcu."
+              } ,
+              actions: {
+                items: [
+                  {
+                    href: "redact-lpa-statement",
+                    text: "Change",
+                    visuallyHiddenText: "Redacted statement"
+                  }
+                ]
+              }
+            } if data['review-outcome'] == 'Accepted with redaction',
+            {
+              key: {
+                text: "Supporting documents"
+              },
+              value: {
+                html:"<ul class='govuk-list govuk-list--bullet'><li><a href='#'>appeal-2110166-added-document.doc</a></li></ul>"
+              },
+              actions: {
+                items: [
+                  {
+                    href: "redact-supporting-documents",
+                    text: "Change",
+                    visuallyHiddenText: "Supporting documents"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Review decision"
+              },
+              value: {
+                html: data['review-outcome'] or 'Accepted'
+              },
+              actions: {
+                items: [
+                  {
+                    href: "what-is-outcome-of-review",
+                    text: "Change",
+                    visuallyHiddenText: "Review outcome"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Reason for rejection"
+              },
+              value: {
+                html: "<ul class='govuk-list govuk-list--bullet'><li>Sensitive information</li><li>Other: Reason</li></ul>"
+              },
+              actions: {
+                items: [
+                  {
+                    href: "why-incomplete",
+                    text: "Change",
+                    visuallyHiddenText: "Reasons"
+                  }
+                ]
+              }
+            } if data['review-outcome'] == 'Rejected'
+          ] }) }}
+
+        </div>
+
+        {{ govukButton({
+          text: "Complete the review"
+        }) }}
+
+      </form>
+
+
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,288 @@
+{% extends "layouts/PINS-admin.html" %}
+
+{% set title = "Case status" %}
+{% set pageName = title + ' - Planning Inspectorate'%}
+
+{% set back = false %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-quarter">
+      <ul class="govuk-list govuk-list-bullet">
+        <li>
+          <a href="/patterns/address/" class="govuk-link--no-visited-state govuk-link--no-underline">
+            Address
+          </a>
+        </li>
+        <li>
+          <a href="/patterns/case-heading/" class="govuk-link--no-visited-state govuk-link--no-underline">
+            Case heading
+          </a>
+        </li>
+        <li>
+          <a href="/patterns/case-status/" class="govuk-link--no-visited-state govuk-link--no-underline govuk-!-font-weight-bold">
+            Case status
+          </a>
+        </li>
+        <li>
+          <a href="/patterns/important-banners/" class="govuk-link--no-visited-state govuk-link--no-underline">
+            Banner (important)
+          </a>
+        </li>
+        <li>
+          <a href="/patterns/success-banner/" class="govuk-link--no-visited-state govuk-link--no-underline">
+            Banner (success)
+          </a>
+        </li>
+        <li>
+          <a href="/patterns/meta-data/" class="govuk-link--no-visited-state govuk-link--no-underline">
+            Meta data
+          </a>
+        </li>
+        <li>
+          <a href="/patterns/personal-list/" class="govuk-link--no-visited-state govuk-link--no-underline">
+            Personal list
+          </a>
+        </li>
+        <li>
+          <a href="/patterns/multiple-document-upload/" class="govuk-link--no-visited-state govuk-link--no-underline">
+            Upload multiple files
+          </a>
+        </li>
+      </ul>
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+      <ul class="govuk-list govuk-list-bullet">
+        <li>
+          <a href="/patterns/check-answers?cards=" class="govuk-link--no-visited-state govuk-link--no-underline">
+            Check answers (simple)
+          </a>
+        </li>
+        <li>
+          <a href="/patterns/check-answers?cards=true" class="govuk-link--no-visited-state govuk-link--no-underline">
+            Check answers (with cards)
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="govuk-grid-column-three-quarters">
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-2" id="personal-list">
+        {{ title }}
+      </h1>
+      <p>
+        <strong class="govuk-tag govuk-!-margin-bottom-5">experimental</strong>
+      </p>
+
+      <p class="govuk-body-l">
+        Use the <a href="https://design-system.service.gov.uk/components/tag/" class="govuk-link">design system Tag component</a> to show users the stage the casework is in.
+      </p>
+
+      {% set exampleHtml %}
+
+      <p>
+        {{ caseStatus ( caseStatus = "validation" ) }}
+      </p>
+
+      <p>
+        {{ caseStatus ( caseStatus = "assign" ) }}
+      </p>
+
+      <p>
+        {{ caseStatus ( caseStatus = "ready" ) }}
+      </p>
+
+      <p>
+        {{ caseStatus ( caseStatus = "questionnaire" ) }}
+      </p>
+
+      <p>
+        {{ caseStatus ( caseStatus = "statements" ) }}
+      </p>
+
+      <p>
+        {{ caseStatus ( caseStatus = "finalComments" ) }}
+      </p>
+
+      <p>
+        {{ caseStatus ( caseStatus = "setupSiteVisit" ) }}
+      </p>
+
+      <p>
+        {{ caseStatus ( caseStatus = "awaitingSiteVisit" ) }}
+      </p>
+
+      <p>
+        {{ caseStatus ( caseStatus = "setupHearing" ) }}
+      </p>
+
+      <p>
+        {{ caseStatus ( caseStatus = "awaitingHearing" ) }}
+      </p>
+
+      <p>
+        {{ caseStatus ( caseStatus = "proofs" ) }}
+      </p>
+
+      <p>
+        {{ caseStatus ( caseStatus = "setupInquiry" ) }}
+      </p>
+
+      <p>
+        {{ caseStatus ( caseStatus = "awaitingInquiry" ) }}
+      </p>
+
+      <p>
+        {{ caseStatus ( caseStatus = "decision" ) }}
+      </p>
+
+      <p>
+        {{ caseStatus ( caseStatus = "complete" ) }}
+      </p>
+
+      <p>
+      {{ caseStatus ( caseStatus = "invalid" ) }}
+      <p>
+
+      <p>
+        {{ caseStatus ( caseStatus = "withdrawn" ) }}
+      </p>
+
+      <p>
+        {{ caseStatus ( caseStatus = "awaiting" ) }}
+      </p>
+
+      <p>
+        {{ caseStatus ( caseStatus = "transferred" ) }}
+      </p>
+
+      {% endset -%}
+
+      {% set codeHtml %}
+        <pre class="code-snippet"><code>{% raw -%}{{ caseStatus (caseStatus = "validation")}}{% endraw %}
+  </code></pre>
+
+      {% endset -%}
+
+      {{ govukTabs({
+        items: [
+          {
+            label: "Example",
+            id: "example",
+            panel: {
+              html: exampleHtml
+            }
+          },
+          {
+            label: "Nunjucks",
+            id: "nunjucks",
+            panel: {
+              html: codeHtml
+            }
+          }
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-l">
+        When to use this pattern
+      </h2>
+
+      <p>
+        Several areas of the service benefit from this component to help users to contextualise a set of appeals or maintain focus on a specific one.
+      </p>
+
+      <h2 class="govuk-heading-l">
+        How it works
+      </h2>
+
+      <p>
+        You can use this component as a <a href="https://mozilla.github.io/nunjucks/">Nunjucks</a> macro.
+      </p>
+
+      <table class="govuk-table">
+        <caption class="govuk-table__caption govuk-table__caption--m">Parameters</caption>
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header govuk-!-font-weight-regular">validation</th>
+            <th scope="col" class="govuk-table__header">{{ caseStatus ( caseStatus = 'validation' ) }}</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header govuk-!-font-weight-regular">assign</th>
+            <th scope="col" class="govuk-table__header">{{ caseStatus ( caseStatus = 'assign' ) }}</th>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header govuk-!-font-weight-regular">ready</th>
+            <th scope="col" class="govuk-table__header">{{ caseStatus ( caseStatus = 'ready' ) }}</th>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header govuk-!-font-weight-regular">questionnaire</th>
+            <th scope="col" class="govuk-table__header">{{ caseStatus ( caseStatus = 'questionnaire' ) }}</th>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header govuk-!-font-weight-regular">statements</th>
+            <th scope="col" class="govuk-table__header">{{ caseStatus ( caseStatus = 'statements' ) }}</th>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header govuk-!-font-weight-regular">finalComments</th>
+            <th scope="col" class="govuk-table__header">{{ caseStatus ( caseStatus = 'finalComments' ) }}</th>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header govuk-!-font-weight-regular">setupSiteVisit</th>
+            <th scope="col" class="govuk-table__header">{{ caseStatus ( caseStatus = 'setupSiteVisit' ) }}</th>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header govuk-!-font-weight-regular">awaitingSiteVisit</th>
+            <th scope="col" class="govuk-table__header">{{ caseStatus ( caseStatus = 'awaitingSiteVisit' ) }}</th>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header govuk-!-font-weight-regular">setupHearing</th>
+            <th scope="col" class="govuk-table__header">{{ caseStatus ( caseStatus = 'setupHearing' ) }}</th>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header govuk-!-font-weight-regular">awaitingHearing</th>
+            <th scope="col" class="govuk-table__header">{{ caseStatus ( caseStatus = 'awaitingHearing' ) }}</th>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header govuk-!-font-weight-regular">proofs</th>
+            <th scope="col" class="govuk-table__header">{{ caseStatus ( caseStatus = 'proofs' ) }}</th>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header govuk-!-font-weight-regular">setupInquiry</th>
+            <th scope="col" class="govuk-table__header">{{ caseStatus ( caseStatus = 'setupInquiry' ) }}</th>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header govuk-!-font-weight-regular">awaitingInquiry</th>
+            <th scope="col" class="govuk-table__header">{{ caseStatus ( caseStatus = 'awaitingInquiry' ) }}</th>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header govuk-!-font-weight-regular">decision</th>
+            <th scope="col" class="govuk-table__header">{{ caseStatus ( caseStatus = 'decision' ) }}</th>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header govuk-!-font-weight-regular">complete</th>
+            <th scope="col" class="govuk-table__header">{{ caseStatus ( caseStatus = 'complete' ) }}</th>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header govuk-!-font-weight-regular">invalid</th>
+            <th scope="col" class="govuk-table__header">{{ caseStatus ( caseStatus = 'withdrawn' ) }}</th>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header govuk-!-font-weight-regular">invalid</th>
+            <th scope="col" class="govuk-table__header">{{ caseStatus ( caseStatus = 'invalid' ) }}</th>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header govuk-!-font-weight-regular">awaiting</th>
+            <th scope="col" class="govuk-table__header">{{ caseStatus ( caseStatus = 'awaiting' ) }}</th>
+          </tr>
+          <tr class="govuk-table__row pins-govuk-table__row--last">
+            <th scope="row" class="govuk-table__header govuk-!-font-weight-regular">transferred</th>
+            <th scope="col" class="govuk-table__header">{{ caseStatus ( caseStatus = 'transferred' ) }}</th>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+{% endblock %}

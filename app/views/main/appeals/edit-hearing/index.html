@@ -1,0 +1,82 @@
+{% extends "layouts/bo.html" %}
+
+{% set title = "Date and time" %}
+{% set pageName = title %}
+
+{% set back = true %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form method="post">
+        <span class="govuk-caption-l">Appeal {{appeal.id}} - update hearing</span>
+        <h1 class="govuk-heading-l">{{title}}</h1>
+
+        {{date | log}}
+
+        {{ govukDateInput({
+          fieldset: {
+            legend: {
+              text: "Date",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          hint: {
+            text: "For example, 31 3 2025"
+          },
+          items: [
+            {
+              name: "editHearing[date][day]",
+              label: "Day",
+              value: date | day,
+              classes: "govuk-input--width-2"
+            },
+            {
+              name: "editHearing[date][month]",
+              label: "Month",
+              value: date | month,
+              classes: "govuk-input--width-2"
+            },
+            {
+              name: "editHearing[date][year]",
+              label: "Year",
+              value: date | year,
+              classes: "govuk-input--width-4"
+            }
+          ]
+        }) }}
+
+        {{appTimeInput({
+          id: 'time',
+          fieldset: {
+            legend: {
+              text: "Time",
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          hint: {
+            text: 'For example, 9:00 or 13:15'
+          },
+          hour: {
+            name: "editHearing[date][hour]", 
+            value: (date | hour) or '10'
+          },
+          minute: {
+            name: "editHearing[date][minute]", 
+            value: (date | minute) or '00'
+          }
+        })}}
+
+        
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+
+    </div>
+  </div>
+{% endblock %}

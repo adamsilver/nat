@@ -1,0 +1,133 @@
+{% macro caseStatus(caseStatus) %}
+
+  {%- from "govuk/components/tag/macro.njk" import govukTag -%}
+
+  {% if caseStatus === "validation" %}
+    {{ govukTag({
+      text: "Validation",
+      classes:'govuk-tag--green'
+    }) }}
+
+  {% elseif caseStatus === "assign" %}
+    {{ govukTag({
+      text: "Assign case officer",
+      classes:'govuk-tag--green'
+    }) }}
+
+  {% elseif caseStatus === "ready" %}
+    {{ govukTag({
+      text: "Ready to start",
+      classes:'govuk-tag--green'
+    }) }}
+
+  {% elseif caseStatus === "questionnaire" %}
+    {{ govukTag({
+      text: "LPA questionnaire",
+      classes:'govuk-tag--green'
+    }) }}
+
+  {% elseif caseStatus === "statements" %}
+    {{ govukTag({
+      text: "Statements",
+      classes:'govuk-tag--green'
+    }) }}
+
+  {% elseif caseStatus === "comments" %}
+    {{ govukTag({
+      text: "IP comments",
+      classes:'govuk-tag--green'
+    }) }}
+
+  {% elseif caseStatus === "finalComments" %}
+    {{ govukTag({
+      text: "Final comments",
+      classes:'govuk-tag--green'
+    }) }}
+
+  {% elseif caseStatus === "proofs" %}
+    {{ govukTag({
+      text: "Proof of evidence",
+      classes:'govuk-tag--green'
+    }) }}
+
+  {% elseif caseStatus === "setupSiteVisit" %}
+    {{ govukTag({
+      text: "Site visit ready to set up",
+      classes:'govuk-tag--green'
+    }) }}
+
+  {% elseif caseStatus === "awaitingSiteVisit" %}
+    {{ govukTag({
+      text: "Awaiting site visit",
+      classes:'govuk-tag--yellow'
+    }) }}
+
+  {% elseif caseStatus === "setupHearing" %}
+    {{ govukTag({
+      text: "Hearing ready to set up",
+      classes:'govuk-tag--green'
+    }) }}
+
+  {% elseif caseStatus === "awaitingHearing" %}
+    {{ govukTag({
+      text: "Awaiting hearing",
+      classes:'govuk-tag--yellow'
+    }) }}
+
+  {% elseif caseStatus === "setupInquiry" %}
+    {{ govukTag({
+      text: "Inquiry ready to set up",
+      classes:'govuk-tag--green'
+    }) }}
+
+  {% elseif caseStatus === "awaitingInquiry" %}
+    {{ govukTag({
+      text: "Awaiting inquiry",
+      classes:'govuk-tag--yellow'
+    }) }}
+
+  {% elseif caseStatus === "decision" %}
+    {{ govukTag({
+      text: "Issue decision",
+      classes:'govuk-tag--green'
+    }) }}
+
+  {% elseif caseStatus === "complete" %}
+    {{ govukTag({
+      text: "Complete",
+      classes:'govuk-tag--blue'
+    }) }}
+
+  {% elseif caseStatus === "invalid" %}
+    {{ govukTag({
+      text: "Invalid",
+      classes:'govuk-tag--grey'
+    }) }}
+
+  {% elseif caseStatus === "awaiting" %}
+    {{ govukTag({
+      text: "Awaiting transfer",
+      classes:'govuk-tag--green'
+    }) }}
+
+  {% elseif caseStatus === "transferred" %}
+    {{ govukTag({
+      text: "Transferred",
+      classes:'govuk-tag--grey'
+    }) }}
+
+  {% elseif caseStatus === "withdrawn" %}
+    {{ govukTag({
+      text: "Withdrawn",
+      classes:'govuk-tag--grey'
+    }) }}
+
+  {% elseif caseStatus === "closed" %}
+    {{ govukTag({
+      text: "Closed",
+      classes:'govuk-tag--grey'
+    }) }}
+
+  {% endif %}
+
+{% endmacro %}

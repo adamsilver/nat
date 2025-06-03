@@ -1,0 +1,78 @@
+{% extends "layouts/PINS-Simple-post-mvp.html" %}
+
+{% set pageName="Case details" %}
+
+{% set back = false %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">Appeal a planning decision</span>
+
+      <h1 class="govuk-heading-l">
+        Redaction
+      </h1>
+
+      {{ govukTable({
+        captionClasses: "govuk-table__caption--m",
+        firstCellIsHeader: true,
+
+        rows: [
+          [
+            {
+              text: "Typical user"
+            },
+            {
+              text: "Case officers"
+            }
+          ],
+          [
+            {
+              text: "User story"
+            },
+            {
+              html: "
+              <ul class='govuk-list govuk-list--bullet'>
+                <li>
+                  As a case officer, I need to redact documents.
+                </li>
+                <li>
+                  As an Inspector, I need to be able to know what was redacted and read it.
+                </li>
+              </ul>
+              "
+            }
+          ],
+          [
+            {
+              text: "Jira ticket"
+            },
+            {
+              html: ''
+            }
+          ]
+        ]
+      }) }}
+      <h2 class="govuk-heading-m">
+        Version 1
+      </h2>
+
+      {{ govukButton({
+        text: "View prototype",
+        isStartButton: true,
+        classes: "govuk-!-margin-bottom-3",
+        href: '/projects/redaction/v2'
+      }) }}
+
+      <p class="govuk-body">
+        <a href="/projects/redaction/v2/view-redacted-text" class="govuk-link">
+          Viewing redacted text
+        </a>
+      </p>
+
+    </div>
+  </div>
+
+{% endblock %}

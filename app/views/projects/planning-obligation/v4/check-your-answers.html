@@ -1,0 +1,101 @@
+{% extends "layouts/PINS-post-mvp.html" %}
+
+{% if data['planning-obligation-review-decision'] == 'Reject planning obligation' %}
+  {% set title = "Check details and reject planning obligation" %}
+{% else %}
+  {% set title = "Check details and accept planning obligation" %}
+{% endif %}
+{% set pageName = title + ' - Planning Inspectorate' %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">
+        Appeal 2110166
+      </span>
+      <h1 class="govuk-heading-l">
+        {{ title }}
+      </h1>
+
+    </div>
+    <div class="govuk-grid-column-full">
+
+      <form method="post">
+
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key govuk-!-width-one-quarter">
+             Planning obligation
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <ul class="govuk-list govuk-list--bullet">
+                <li>
+                  <a href="#" class="govuk-link">
+                    appeal-2110166-section106-agreement_part1.pdf
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="govuk-link">
+                    appeal-2110166-section106-agreement_part2.pdf
+                  </a>
+                </li>
+              </ul>
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="obligation-review-documents">Change<span class="govuk-visually-hidden"> planning obligation</span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Review decision
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['planning-obligation-review-decision' ] or 'Accept planning obligation'}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="obligation-review">Change<span class="govuk-visually-hidden"> review decision</span></a>
+            </dd>
+          </div>
+          {% if data['planning-obligation-review-decision'] == 'Reject planning obligation' %}
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Reason for rejecting the planning obligation
+              </dt>
+              <dd class="govuk-summary-list__value">
+                Not dated
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="obligation-review">Change<span class="govuk-visually-hidden"> reasons</span></a>
+              </dd>
+            </div>
+          {% endif %}
+        </dl>
+
+      </div>
+      <div class="govuk-grid-column-two-thirds">
+
+        {% if data['planning-obligation-review-decision'] == 'Reject planning obligation' %}
+          <p class="govuk-body">
+            We’ll send an email to the appellant to explain why you rejected their planning obligation.
+          </p>
+
+          {{ govukButton({
+            text: "Reject planning obligation"
+          }) }}
+
+        {% else %}
+
+          {{ govukButton({
+            text: "Accept planning obligation"
+          }) }}
+
+        {% endif %}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

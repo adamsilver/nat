@@ -1,0 +1,242 @@
+{% extends "layouts/PINS-Simple.html" %}
+
+{% set pageName="File upload" %}
+
+{% block backLink %}
+  {{ govukBackLink({
+    text: "Back to all prototypes",
+    href: "/"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <span class="govuk-caption-l">
+      Appeal a planning decision
+    </span>
+    <h1 class="govuk-heading-l">
+      File upload
+    </h1>
+    
+    
+    <section class="govuk-!-margin-bottom-6">
+
+	<h2 class="govuk-heading-m">Version 3
+
+		{{govukTag({
+          text: "Researched",
+          classes: "govuk-!-margin-left-2 govuk-tag--green"
+        })}}
+
+		<!-- Status tag options
+
+		{{govukTag({
+          text: "New",
+          classes: "govuk-!-margin-left-2 govuk-tag--green"
+        })}}
+
+        {{govukTag({
+          text: "In progress",
+          classes: "govuk-!-margin-left-2 govuk-tag--yellow"
+        })}}
+
+        {{govukTag({
+          text: "Ready for review",
+          classes: "govuk-!-margin-left-2 govuk-tag--blue"
+        })}}
+
+        {{govukTag({
+          text: "Ready for research",
+          classes: "govuk-!-margin-left-2 govuk-tag--green"
+        })}}
+
+        {{govukTag({
+          text: "Researched",
+          classes: " govuk-!-margin-left-2 govuk-tag--green"
+        })}}
+
+        -->
+
+	</h2>
+
+
+	{{ govukButton({
+	  text: "View prototype",
+	  href: "v3/lpa-questionnaire",
+	  isStartButton: true
+	}) }}
+
+
+	<p class="govuk-body">Changes:</p>
+
+	<ul class="govuk-list govuk-list--bullet">
+        <li>
+          Added other option for redacted meta data
+        </li>
+        <li>
+        	Scenario where there is only one document version remaining to be removed
+        </li>
+      </ul>
+
+      <h3 class="govuk-heading-s">Variants:</h3>
+
+<ul class="govuk-list govuk-list--bullet">
+        <li>
+          <a href="v3b/lpa-questionnaire">Version 3b</a> (One file is still uploading to demonstrate uploading tag)
+        </li>
+        <li>
+          <a href="v3b/lpa-questionnaire-error">Version 3c</a> (a file failed virus check)
+        </li>
+      </ul>
+
+    </section>
+    
+    
+    <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+	
+
+	<h2 class="govuk-heading-m">Version 2
+
+		{{govukTag({
+          text: "Researched",
+          classes: " govuk-!-margin-left-2 govuk-tag--green"
+        })}}
+
+		<!-- Status tag options
+
+		{{govukTag({
+          text: "New",
+          classes: "govuk-!-margin-left-2 govuk-tag--green"
+        })}}
+
+        {{govukTag({
+          text: "In progress",
+          classes: "govuk-!-margin-left-2 govuk-tag--yellow"
+        })}}
+
+        {{govukTag({
+          text: "Ready for review",
+          classes: "govuk-!-margin-left-2 govuk-tag--blue"
+        })}}
+
+        {{govukTag({
+          text: "Ready for research",
+          classes: "govuk-!-margin-left-2 govuk-tag--green"
+        })}}
+
+        {{govukTag({
+          text: "Researched",
+          classes: " govuk-!-margin-left-2 govuk-tag--green"
+        })}}
+
+        -->
+
+	</h2>
+
+
+	{{ govukButton({
+	  text: "View prototype",
+	  href: "v2/lpa-questionnaire",
+	  isStartButton: true
+	}) }}
+
+	<p class="govuk-body">Changes:</p>
+
+	<ul class="govuk-list govuk-list--bullet">
+        <li>
+          Rework of view a document layout
+        </li>
+        <li>
+          Multiple copy amends
+        </li>
+      </ul>
+
+
+    </section>
+    
+    
+    <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+
+    <section class="govuk-!-margin-bottom-6">
+
+
+	<h2 class="govuk-heading-m">Version 1
+		{%- from "govuk/components/tag/macro.njk" import govukTag -%}
+
+		{{govukTag({
+          text: "Researched",
+          classes: " govuk-!-margin-left-2 govuk-tag--green"
+        })}}
+
+		<!-- Status tag options
+
+		{{govukTag({
+          text: "New",
+          classes: "govuk-!-margin-left-2 govuk-tag--green"
+        })}}
+
+        {{govukTag({
+          text: "In progress",
+          classes: "govuk-!-margin-left-2 govuk-tag--yellow"
+        })}}
+
+        {{govukTag({
+          text: "Ready for review",
+          classes: "govuk-!-margin-left-2 govuk-tag--blue"
+        })}}
+
+        {{govukTag({
+          text: "Ready for research",
+          classes: "govuk-!-margin-left-2 govuk-tag--green"
+        })}}
+
+        {{govukTag({
+          text: "Researched",
+          classes: " govuk-!-margin-left-2 govuk-tag--green"
+        })}}
+
+        -->
+
+	</h2>
+
+	<p class="govuk-body">User can upload addition files to the LPA questionnaire.</p>
+
+	{{ govukButton({
+	  text: "View prototype",
+	  href: "v1/lpa-questionnaire",
+	  isStartButton: true
+	}) }}
+
+
+	<h3 class="govuk-heading-m">Scenario for UR</h3>
+
+	<p>Case worker has received an email with 2 documents (PDFs) they need to add to the LPA questionnaire. Having navigated to LPA Questionnaire page, they need to successfully <strong>upload 2 files for a Tree Preservation Order</strong> and enter file details for for the two files.</p>
+
+	<ul class="govuk-list">
+	  <li>
+	    <a class="govuk-link" href="v1/lpa-questionnaire.html">Test A</a> (preferred option)
+	  </li>
+	  <li>
+	    <a class="govuk-link" href="v1/B-test/lpa-questionnaire-B.html">Test B</a>
+	  </li>
+	  <li>
+	    Manage documents
+	    <ul>
+		    <li><a href="v1/manage-documents/option1.html">Option 1</a></li>
+		    <li><a href="v1/manage-documents/option2.html">Option 2</a></li>
+	  </li>
+	</ul>
+
+
+    </section>
+
+
+
+
+  </div>
+
+{% endblock %}

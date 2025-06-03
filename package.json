@@ -2,12 +2,28 @@
   "scripts": {
     "dev": "nowprototypeit dev || npx -y nowprototypeit@latest validate-kit dev $?",
     "serve": "nowprototypeit serve || npx -y nowprototypeit@latest validate-kit serve $?",
-    "start": "nowprototypeit start || npx -y nowprototypeit@latest validate-kit start $?"
+    "start": "nowprototypeit start || npx -y nowprototypeit@latest validate-kit start $?",
+    "generate-data": "node ./scripts/generate-appeals.js && node ./scripts/generate-linked-appeals.js"
   },
   "dependencies": {
+    "@faker-js/faker": "^9.2.0",
     "@govuk-prototype-kit/common-templates": "2.0.1",
+    "@govuk-prototype-kit/step-by-step": "2.2.3",
+    "@govuk-prototype-kit/task-list": "2.0.0",
+    "@ministryofjustice/frontend": "5.1.3",
     "@nowprototypeit/govuk-frontend-adaptor": "0.0.8",
-    "govuk-frontend": "5.10.0",
-    "nowprototypeit": "0.11.4"
+    "@x-govuk/govuk-prototype-components": "4.0.0",
+    "@x-govuk/govuk-prototype-filters": "2.0.0",
+    "connect-flash": "^0.1.1",
+    "govuk-frontend": "5.9.0",
+    "govuk-prototype-kit": "13.16.2",
+    "hmrc-frontend": "6.65.0",
+    "jquery": "^3.7.0",
+    "lodash": "^4.17.21",
+    "luxon": "^3.5.0",
+    "notifications-node-client": "8.2.1",
+    "nowprototypeit": "^0.13.0",
+    "radio-button-redirect": "^1.2.0",
+    "uuid": "^8.3.2"
   }
 }

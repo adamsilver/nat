@@ -1,0 +1,140 @@
+{% extends "layouts/PINS-Header-Nav.html" %}
+
+{% set pageName="All cases" %}
+
+{% set back = false %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+<h1 class="govuk-heading-l">All cases</h1>
+
+	{{ govukInput({
+	  label: {
+	    text: "Search all cases",
+	    classes: "govuk-label--m",
+	    isPageHeading: false
+	  },
+	  classes: "",
+	  hint: {
+	    text: "Enter appeal ID or postcode"
+	  },
+	  id: "account-number",
+	  name: "account-number",
+	  inputmode: "numeric",
+	  spellcheck: false
+	}) }}
+
+	<div class="govuk-button-group">
+	  <button class="govuk-button" data-module="govuk-button">
+	    Search
+	  </button>
+	</div>
+		
+	<details class="govuk-details" data-module="govuk-details">
+		<summary class="govuk-details__summary">
+		  <span class="govuk-details__summary-text">
+			Filters
+		  </span>
+		</summary>
+		<div class="govuk-details__text">
+		  
+		  {{ govukSelect({
+			id: "sort",
+			name: "sort",
+			label: {
+			  text: "Show cases with status"
+			},
+			items: [
+			  {
+				value: "all",
+				text: "All",
+				selected: true
+			  },
+			  {
+				value: "ready to start",
+				text: "Ready to start"
+			  },
+			  {
+				value: "LPA questionnaire",
+				text: "LPA questionnaire"
+			  },
+			  {
+				value: "final comment review",
+				text: "Final comment review"
+			  },
+			  {
+				value: "ready final review",
+				text: "Ready for final review"
+			  },
+			  {
+				value: "arrange site visit",
+				text: "Arrange site visit"
+			  },
+			  {
+				value: "completed",
+				text: "Completed"
+			  }
+			]
+		  }) }}
+		  
+		  <div class="govuk-button-group">
+		  
+		  {{ govukButton({
+				text: "Apply",
+				classes: "govuk-button--secondary"
+			  }) }}
+			  
+			  <a class="govuk-link" href="#">Clear filter</a>
+			  
+		  </div>
+		  
+		</div>
+	  </details>
+
+	  <div class="govuk-section-break--visible govuk-!-margin-top-2 govuk-!-margin-bottom-6"></div>
+
+
+  </div>
+</div>
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+	
+	  
+	  
+	  <h2 class="govuk-heading-m">Cases ordered from oldest to newest</h2>
+
+	  {% include "projects/closing-cases/v1/includes/national-list-table.html" %}
+
+	{{ govukPagination({
+	  previous: {
+	    href: "#"
+	  },
+	  next: {
+	    href: "#"
+	  },
+	  items: [
+	    {
+	      number: 1,
+	      current: true,
+	      href: "#"
+	    },
+	    {
+	      number: 2,
+	      href: "#"
+	    },
+	    {
+	      number: 3,
+	      href: "#"
+	    }
+	  ]
+	}) }}
+
+  </div>
+</div>
+
+{% endblock %}

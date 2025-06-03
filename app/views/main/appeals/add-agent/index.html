@@ -1,0 +1,71 @@
+{% extends "layouts/bo.html" %}
+
+{% set title = "Agent contact details" %}
+{% set pageName = title %}
+
+{% set back = true %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form method="post">
+        <h1 class="govuk-heading-l">{{title}}</h1>
+
+        {{ govukInput({
+          id: "addAgent[firstName]",
+          name: "addAgent[firstName]",
+          label: {
+            text: "First name",
+            classes: "govuk-label--m"
+          }
+        }) }}
+
+        {{ govukInput({
+          id: "addAgent[lastName]",
+          name: "addAgent[lastName]",
+          label: {
+            text: "Last name",
+            classes: "govuk-label--m"
+          }
+        }) }}
+
+        {{ govukInput({
+          id: "addAgent[organisationName]",
+          name: "addAgent[organisationName]",
+          label: {
+            text: "Organisation name",
+            classes: "govuk-label--m"
+          }
+        }) }}
+
+        {{ govukInput({
+          id: "addAgent[emailAddress]",
+          name: "addAgent[emailAddress]",
+          label: {
+            text: "Email address",
+            classes: "govuk-label--m"
+          },
+          type: "email",
+          autocomplete: "email",
+          spellcheck: false
+        }) }}
+
+        {{ govukInput({
+          id: "addAgent[phone]",
+          name: "addAgent[phone]",
+          label: {
+            text: "Phone number",
+            classes: "govuk-label--m"
+          }
+        }) }}
+
+        {{ govukButton({
+          text: "Add agent contact details"
+        }) }}
+      </form>
+
+    </div>
+  </div>
+{% endblock %}

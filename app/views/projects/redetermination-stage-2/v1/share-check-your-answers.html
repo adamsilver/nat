@@ -1,0 +1,80 @@
+{% extends "layouts/PINS-post-mvp.html" %}
+
+{% set title = "Check details and share new evidence" %}
+{% set pageName = title + ' - Planning Inspectorate'%}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">Appeal 2110166</span>
+      <h1 class="govuk-heading-l">{{title}}</h1>
+
+      <form method="post">
+
+        <div class="pins-panel">
+
+          {{ govukSummaryList({
+            classes: "long-answers govuk-!-margin-bottom-6",
+            rows: [
+
+              {
+                key: {
+                  text: "Appeal procedure"
+                },
+                value: {
+                  html: data['appeal-procedure'] or 'Hearing'
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "confirm-procedure",
+                      text: "Change",
+                      visuallyHiddenText: " appeal procedure"
+                    }
+                  ]
+                }
+              },
+              {
+                key: {
+                  text: "Request final comments"
+                },
+                value: {
+                  html: data['final-comments-requested'] or 'No'
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "request-final-comments",
+                      text: "Change",
+                      visuallyHiddenText: " final comments"
+                    }
+                  ]
+                }
+              } if data['appeal-procedure'] != 'Written representations'
+            ] })
+          }}
+
+        </div>
+
+
+        <p class="govuk-body">
+          {% if data['appeal-procedure'] == 'Written representations' and data['final-comments-requested'] == 'Yes' %}
+            We’ll share this evidence with the relevant parties and invite them to provide final comments.
+          {% else %}
+            We’ll share new evidence with the relevant parties.
+          {% endif %}
+        </p>
+
+        {{ govukButton({
+          text: "Share new evidence"
+        }) }}
+
+      </form>
+
+
+    </div>
+  </div>
+
+{% endblock %}

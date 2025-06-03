@@ -1,0 +1,267 @@
+{% extends "layouts/PINS.html" %}
+
+{% set pageName="Case history" %}
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+	  
+	  
+	<span class="govuk-caption-l">Appeal 2110166</span>
+	<h1 class="govuk-heading-l">Case history</h1>
+
+
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">	
+	
+	{% from "govuk/components/table/macro.njk" import govukTable %}
+
+{{ govukTable({
+  captionClasses: "govuk-table__caption--m",
+  firstCellIsHeader: false,
+  head: [
+    {
+      text: "Date and time"
+    },
+    {
+      text: "Details"
+    },
+    {
+      text: "User"
+    }
+    
+  ],
+  rows: [
+    [
+      {
+        html: "15 July 2023<br><span class='govuk-!-font-size-16'>13:00</span>"
+      },
+      {
+        html: "<p>the document<br>
+				<a href='#'>tree-preservation-order-B.pdf</a><br>
+				was uploaded</p>"
+      },
+      {
+        html: "<a href='#'>lexi.patel@planning.gov.uk</a>"
+      }
+    ],[
+      {
+        html: "14 July 2023<br><span class='govuk-!-font-size-16'>15:00</span>"
+      },
+      {
+        html: "<p>the document<br>
+				<a href='#'>tree-preservation-order-B.pdf</a><br>
+				was removed</p>"
+      },
+      {
+        html: "<a href='#'>lexi.patel@planning.gov.uk</a>"
+      }
+    ],
+    [
+      {
+        html: "13 July 2023<br><span class='govuk-!-font-size-16'>10:08</span>"
+      },
+      {
+        html: "<p>A new version of<br>
+				<a href='#'>tree-preservation-order-B.pdf</a><br>
+				was uploaded</p>"
+      },
+      {
+        html: "<a href='#'>lexi.patel@planning.gov.uk</a>"
+      }
+    ],
+    [
+      {
+        html: "12 July 2023<br><span class='govuk-!-font-size-16'>10:06</span>"
+      },
+      {
+        html: "<p>the document<br>
+				<a href='#'>tree-preservation-order-B.pdf</a><br>
+				was viewed</p>"
+      },
+      {
+        html: "<a href='#'>jeremy.pfifer@planning.gov.uk</a>"
+      }
+    ],
+    [
+      {
+        html: "11 July 2023<br><span class='govuk-!-font-size-16'>10:06</span>"
+      },
+      {
+        html: "<p>the document<br>
+				<a href='#'>tree-preservation-order-B.pdf</a><br>
+				was marked as redacted</p>"
+      },
+      {
+        html: "<a href='#'>lexi.patel@planning.gov.uk</a>"
+      }
+    ],
+    [
+      {
+        html: "10 July 2023<br><span class='govuk-!-font-size-16'>10:06</span>"
+      },
+      {
+        html: "<p>the <a href='#'>LPA Questionnaire</a><br>
+				was marked as received</p>"
+      },
+      {
+        html: "<a href='#'>john.smith@planning.gov.uk</a>"
+      }
+    ],
+    [
+      {
+        html: "9 July 2023<br><span class='govuk-!-font-size-16'>10:06</span>"
+      },
+      {
+        html: "<p>the <a href='#'>Appellant case</a><br>
+				was marked as received</p>"
+      },
+      {
+        html: "<a href='#'>john.smith@planning.gov.uk</a>"
+      }
+    ],
+    [
+      {
+        html: "8 July 2023<br><span class='govuk-!-font-size-16'>10:06</span>"
+      },
+      {
+        html: "<p>the case officer<br>
+        <a href='#'>robin.whyse@planning.gov.uk</a><br>
+				was added to the team</p>"
+      },
+      {
+        html: "<a href='#'>john.smith@planning.gov.uk</a>"
+      }
+    ],
+    [
+      {
+        html: "7 July 2023<br><span class='govuk-!-font-size-16'>10:06</span>"
+      },
+      {
+        html: "<p>the case officer<br>
+        <a href='#'>sophie.dent@planning.gov.uk</a><br>
+				was removed from the team</p>"
+      },
+      {
+        html: "<a href='#'>john.smith@planning.gov.uk</a>"
+      }
+    ],
+    [
+      {
+        html: "6 July 2023<br><span class='govuk-!-font-size-16'>10:06</span>"
+      },
+      {
+        html: "<p>the inspector<br>
+	        <a href='#'>serena.kent@planning.gov.uk</a><br>
+				was assigned to the case</p>"
+      },
+      {
+        html: "<a href='#'>john.smith@planning.gov.uk</a>"
+      }
+    ],
+    [
+      {
+        html: "5 July 2023<br><span class='govuk-!-font-size-16'>10:06</span>"
+      },
+      {
+        html: "<p>the inspector<br>
+	        <a href='#'>serena.kent@planning.gov.uk</a><br>
+				was removed from the case</p>"
+      },
+      {
+        html: "<a href='#'>john.smith@planning.gov.uk</a>"
+      }
+    ],
+    [
+      {
+        html: "4 July 2023<br><span class='govuk-!-font-size-16'>10:06</span>"
+      },
+      {
+        html: "<p>the case has progressed to<br>
+	        <strong class='govuk-tag'>Status</strong></p>"
+      },
+      {
+        html: "<a href='#'>john.smith@planning.gov.uk</a>"
+      }
+    ],
+    [
+      {
+        html: "3 July 2023<br><span class='govuk-!-font-size-16'>10:06</span>"
+      },
+      {
+        html: "<p>the appeal type was changed to Enforcement</p>"
+      },
+      {
+        html: "<a href='#'>john.smith@planning.gov.uk</a>"
+      }
+    ],
+    [
+      {
+        html: "2 July 2023<br><span class='govuk-!-font-size-16'>10:06</span>"
+      },
+      {
+        html: "<p>the appeal type was set to HAS﻿</p>"
+      },
+      {
+        html: "<a href='#'>john.smith@planning.gov.uk</a>"
+      }
+    ],
+    [
+      {
+        html: "1 July 2023<br><span class='govuk-!-font-size-16'>10:06</span>"
+      },
+      {
+        html: "<p>the appeal procedure was changed to inquiry﻿</p>"
+      },
+      {
+        html: "<a href='#'>john.smith@planning.gov.uk</a>"
+      }
+    ],
+    [
+      {
+        html: "1 July 2023<br><span class='govuk-!-font-size-16'>10:06</span>"
+      },
+      {
+        html: "<p>the appeal procedure was set to inquiry﻿</p>"
+      },
+      {
+        html: "<a href='#'>john.smith@planning.gov.uk</a>"
+      }
+    ],
+    [
+      {
+        html: "30 June 2023<br><span class='govuk-!-font-size-16'>10:06</span>"
+      },
+      {
+        html: "<p>the appeal <a href='#'>289945</a> was linked</p>"
+      },
+      {
+        html: "<a href='#'>john.smith@planning.gov.uk</a>"
+      }
+    ],
+    [
+      {
+        html: "29 June 2023<br><span class='govuk-!-font-size-16'>10:06</span>"
+      },
+      {
+        html: "<p>the related appeal <a href='#'>289945</a> was added</p>"
+      },
+      {
+        html: "<a href='#'>john.smith@planning.gov.uk</a>"
+      }
+    ]
+  ]
+}) }}
+	
+    
+  	
+  </div>
+</div>
+
+
+{% endblock %}

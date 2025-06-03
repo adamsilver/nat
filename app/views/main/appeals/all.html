@@ -1,0 +1,183 @@
+{% extends "layouts/bo.html" %}
+
+{% set title = "Appeals (:total)" | replace(':total', totalAppeals) %}
+{% set pageName = title + ' - Planning Inspectorate'%}
+{% set pageId = 'allAppeals' %}
+
+{% set back = false %}
+
+{% block content %}
+
+  <h1 class="govuk-heading-l">{{title}}</h1>
+
+  <div class="app-filter-layout">
+    <div class="app-filter-layout__filter">
+      {% include "includes/appeals/filter-panel.njk" %}
+    </div>
+    <div class="app-filter-layout__content">
+
+      <div class="app-action-bar">
+        <div class="app-action-bar__filter"></div>
+      </div>
+
+      {% include "includes/appeals/search-form.njk" %}
+      {% include "includes/appeals/sort.njk" %}
+
+      {% if appeals.length %}
+         <div class="app-list">
+          {% for appeal in appeals %}
+           <div class="app-list__item">
+              <h2 class="govuk-heading-s govuk-!-margin-bottom-1">
+                <a href="/main/appeals/{{appeal.id}}" class="govuk-link--no-visited-state">{{appeal.id}}</a>
+                <div class="app-list__tag">
+                  {{ govukTag({ text: appeal.status, classes: appeal.status | appealStatusColour }) }}
+                  {% if appeal.isLeadAppeal == true %}
+                    {{ govukTag({ text: 'Lead', classes: 'govuk-tag--grey' }) }}
+                  {% elseif appeal.isChildAppeal %}
+                    {{ govukTag({ text: 'Child', classes: 'govuk-tag--grey' }) }}
+                  {% endif %}
+                </div>
+              </h2>
+
+              {% set action %}
+                {% for action in appeal.actions %}
+                  <a class="govuk-link" href="{{action.href}}">{{action.text}}</a><br>
+                {% endfor %}
+              {% endset %}
+
+              {{ govukSummaryList({
+                classes: 'govuk-summary-list--no-border app-summary-list--compact app-summary-list--small-text',
+                rows: [
+                  {
+                    key: {
+                      html: 'Planning application reference'
+                    },
+                    value: {
+                    html: appeal.planningApplicationReference
+                    }
+                  } if appeal.planningApplicationReference,
+                  {
+                    key: {
+                      html: 'Local planning authority'
+                    },
+                    value: {
+                    html: appeal.lpa.name
+                    }
+                  },
+                  {
+                    key: {
+                      html: 'Site address'
+                    },
+                    value: {
+                    html: appAddress({address: appeal.site.address, delimiter: ','})
+                    }
+                  },
+                  {
+                    key: {
+                      html: 'Case officer'
+                    },
+                    value: {
+                      html: appeal.caseOfficer or "Unassigned"
+                    }
+                  },
+                  {
+                    key: {
+                      html: 'Inspector'
+                    },
+                    value: {
+                      html: appeal.inspector or "Unassigned"
+                    }
+                  },
+                  {
+                    key: {
+                      html: 'Type'
+                    },
+                    value: {
+                      html: appeal.type
+                    }
+                  },
+                  {
+                    key: {
+                      html: 'Procedure'
+                    },
+                    value: {
+                      html: appeal.procedure
+                    }
+                  } if appeal.procedure,
+                  {
+                    key: {
+                      html: 'Due date'
+                    },
+                    value: {
+                      html: appeal.dueDate | govukDate
+                    }
+                  } if appeal.dueDate,
+                  {
+                    key: {
+                      html: 'Action'
+                    },
+                    value: {
+                      html: action
+                    }
+                  } if appeal.actions.length
+                ]
+              })}}
+
+
+            </div>
+          {% endfor %}
+        </div>
+      {% else %}
+        <p>There are no results.</p>
+      {% endif %}
+
+      {% include "includes/pagination.njk" %}
+    </div>
+  </div>
+
+
+{% endblock %}
+
+{% block scripts %}
+  {{super()}}
+  <script>
+    new App.FilterToggleButton({
+      bigModeMediaQuery: '(min-width: 48.063em)',
+      startHidden: false,
+      toggleButton: {
+        container: $('.app-action-bar__filter'),
+        showText: 'Show filter',
+        hideText: 'Hide filter',
+        classes: 'govuk-button--secondary govuk-!-margin-bottom-3'
+      },
+      closeButton: {
+        container: $('.app-filter__header-action'),
+        text: 'Close'
+      },
+      filter: {
+        container: $('.app-filter-layout__filter')
+      }
+    })
+
+    new App.ListFilter({
+      container: $('.case-officer-filter'),
+      textBox: {
+        label: 'Find case officer'
+      }
+    })
+
+    new App.ListFilter({
+      container: $('.inspector-filter'),
+      textBox: {
+        label: 'Find inspector'
+      }
+    })
+
+    new App.ListFilter({
+      container: $('.lpa-filter'),
+      textBox: {
+        label: 'Find local planning authority'
+      }
+    })
+  </script>
+{% endblock %}

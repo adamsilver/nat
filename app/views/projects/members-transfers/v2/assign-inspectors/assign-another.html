@@ -1,0 +1,48 @@
+{% extends "layouts/PINS.html" %}
+
+{% set pageName="Assign another?" %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+		<span class="govuk-caption-xl">Appeal 2110166</span>
+
+       <form action="document-details-removed" method="post" novalidate>
+
+		<!-- this form is branching using https://github.com/abbott567/radio-button-redirect for simpler routing-->
+
+		{{ govukRadios({
+		  name: "assign-another",
+		  fieldset: {
+		    legend: {
+		      text: "Assign a new inspector?",
+		      isPageHeading: true,
+		      classes: "govuk-fieldset__legend--l"
+		    }
+		  },
+		  items: [
+		    {
+		      value: "yes~/projects/members-transfers/v2/assign-inspectors/search",
+		      text: "Yes"
+		    },
+		    {
+		      value: "no~/projects/members-transfers/v2/assign-inspectors/case",
+		      text: "No"
+		    }
+		   ]
+		}) }}
+
+		{{ govukButton({
+          text: "Continue"
+        }) }}
+
+
+	  </form>
+
+
+    </div>
+  </div>
+
+{% endblock %}

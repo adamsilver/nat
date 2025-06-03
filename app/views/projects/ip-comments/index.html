@@ -1,0 +1,325 @@
+{% extends "layouts/PINS-Simple-post-mvp.html" %}
+
+{% set pageName="Case details" %}
+
+{% set back = false %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <span class="govuk-caption-l">
+      Appeal a planning decision
+    </span>
+    <h1 class="govuk-heading-l">
+      Interested party comments
+    </h1>
+
+    {{ govukTable({
+      captionClasses: "govuk-table__caption--m",
+      firstCellIsHeader: true,
+
+      rows: [
+        [
+          {
+            text: "Typical user"
+          },
+          {
+            text: "Case officers"
+          }
+        ],
+        [
+          {
+            text: "User story"
+          },
+          {
+            html: "<ul class='govuk-list govuk-list-bullet'><li>As a case officer I need to review and redact the IP comments.</li><li>As a case officers I need to mark the redaction status of the IP comments.</li><li>As a case officers I need view their details and be able to manually add IPs to the case.</li></ul>"
+          }
+        ],
+        [
+          {
+            text: "Jira ticket"
+          },
+          {
+            html: '<a href="https://pins-ds.atlassian.net.mcas.ms/browse/BDPAR-16?McasTsid=20596&McasCtx=4">BDPAR-16: Interested party comments</a><br>
+                   <a href="https://pins-ds.atlassian.net/browse/BDPAR-88">BDPAR-88: Interested party addresses</a><br>
+                   <a href="https://pins-ds.atlassian.net/browse/BDPAR-145">BDPAR-145: IP comments update following research</a><br>
+                   <a href="https://pins-ds.atlassian.net/browse/BDPAR-146">BDPAR-146: Extending the Interested party comment deadline</a>'
+
+          }
+        ]
+      ]
+    }) }}
+
+    <h2 class="govuk-heading-m">
+      Version 8 - Anonymous IP comment
+
+      {{govukTag({
+        text: "In progress",
+        classes: "govuk-!-margin-left-2 govuk-tag--yellow"
+      })}}
+    </h2>
+
+    <a href="v8/index?list=personal" role="button" draggable="false" class="govuk-button govuk-button--start" data-module="govuk-button">
+      View prototype
+      <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewBox="0 0 33 40" aria-hidden="true" focusable="false">
+        <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z" />
+      </svg>
+    </a>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+        <a href="/projects/ip-comments/v8/ip-comments?redactedComment=&commentReview=&comment-withdrawn=&manual-ip-comment=">
+          anonymous IP comment in IP comment hub
+        </a>
+      </li>
+      <li>
+        <a href="/projects/ip-comments/v8/comment-review?acceptedComment=&redactedComment=&comment-withdrawn=&manual-ip-comment=&comment-rejected=&extra-document=&new-comment=&documents-added=">
+          anonymous IP comment review
+        </a>
+      </li>
+    </ul>
+
+    <h2 class="govuk-heading-m">
+      Version 7 (redact iteration)
+
+      {{govukTag({
+        text: "Ready for research",
+        classes: "govuk-!-margin-left-2 govuk-tag--green"
+      })}}
+    </h2>
+
+    <a href="v7/index?list=personal" role="button" draggable="false" class="govuk-button govuk-button--start" data-module="govuk-button">
+      View prototype
+      <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewBox="0 0 33 40" aria-hidden="true" focusable="false">
+        <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z" />
+      </svg>
+    </a>
+
+    <h2 class="govuk-heading-m">
+      Version 6 (document upload alignment)
+
+      {{govukTag({
+        text: "Ready for research",
+        classes: "govuk-!-margin-left-2 govuk-tag--green"
+      })}}
+    </h2>
+
+    <a href="v6/index?list=personal" role="button" draggable="false" class="govuk-button govuk-button--start" data-module="govuk-button">
+      View prototype
+      <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewBox="0 0 33 40" aria-hidden="true" focusable="false">
+        <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z" />
+      </svg>
+    </a>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+        <a href="v6/ip-comments?redactedComment=&commentReview=&comment-withdrawn=&manual-ip-comment=">
+          review an IP comment
+        </a>
+      </li>
+      <li>
+        <a href="v6/ip-comments?acceptedComment=yes&commentReview=true">
+          IP comment accepted
+        </a>
+      </li>
+      <li>
+        <a href="v6/comment-redact">
+          redact an IP comment
+        </a>
+      </li>
+      <li>
+        <a href="v6/reject-comment">
+          reject an IP comment
+        </a>
+      </li>
+      <li>
+        <a href="v6/withdraw-comment-upload-evidence?comment-mode=review">
+          withdraw an IP comment
+        </a>
+      </li>
+      <li>
+        <a href="v6/add-ip-name-and-email">
+          manually add an IP comment
+        </a>
+      </li>
+      <li>
+        <a href="v6/extra-document-redaction-status?comment-attachment=review">
+          add supporting documents to an IP comment
+        </a>
+      </li>
+      <li>
+        <a href="v6/index?list=personal">
+          sharing statements and IP comments (see link in personal list)
+        </a>
+      </li>
+      <li>
+        <a href="https://appeals-prototype.herokuapp.com/appeal/appeals/v2/ip-comments">
+          ‘Appeal a planning decision’ service shows shared IP comments to main parties (public facing service)
+        </a>
+      </li>
+      <li>
+        <a href="https://appeals-back-office-prototype.herokuapp.com/projects/ip-comments/v6/case#Site-details">
+          ‘IP addresses’ when a site visit is requested (see Site details section)
+        </a>
+      </li>
+      <li>
+        <a href="v6/update-IP-comments-due-date">
+          Updating the due date for IP comments (and statements)
+        </a>
+      </li>
+    </ul>
+
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+    <h2 class="govuk-heading-m">
+      Version 5 (refinement and additions)
+
+      {{govukTag({
+        text: "Ready for research",
+        classes: "govuk-!-margin-left-2 govuk-tag--green"
+      })}}
+    </h2>
+
+    <a href="v5/index?list=personal" role="button" draggable="false" class="govuk-button govuk-button--start" data-module="govuk-button">
+      View prototype
+      <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewBox="0 0 33 40" aria-hidden="true" focusable="false">
+        <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z" />
+      </svg>
+    </a>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+        <a href="v5/ip-comments?redactedComment=&commentReview=&comment-withdrawn=&manual-ip-comment=">
+          review an IP comment
+        </a>
+      </li>
+      <li>
+        <a href="v5/ip-comments?acceptedComment=yes&commentReview=true">
+          IP comment accepted
+        </a>
+      </li>
+      <li>
+        <a href="v5/comment-redact">
+          redact an IP comment
+        </a>
+      </li>
+      <li>
+        <a href="v5/reject-comment">
+          reject an IP comment
+        </a>
+      </li>
+      <li>
+        <a href="v5/withdraw-comment-upload-evidence?comment-mode=review">
+          withdraw an IP comment
+        </a>
+      </li>
+      <li>
+        <a href="v5/add-ip-name-and-email">
+          manually add an IP comment
+        </a>
+      </li>
+      <li>
+        <a href="v5/extra-document-redaction-status?comment-attachment=review">
+          add supporting documents to an IP comment
+        </a>
+      </li>
+      <li>
+        <a href="v5/index?list=personal">
+          sharing statements and IP comments (see link in personal list)
+        </a>
+      </li>
+      <li>
+        <a href="https://appeals-prototype.herokuapp.com/appeal/appeals/v2/ip-comments">
+          ‘Appeal a planning decision’ service shows shared IP comments to main parties (public facing service)
+        </a>
+      </li>
+      <li>
+        <a href="https://appeals-back-office-prototype.herokuapp.com/projects/ip-comments/v5/case#Site-details">
+          ‘IP addresses’ when a site visit is requested (see Site details section)
+        </a>
+      </li>
+    </ul>
+
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+    <h2 class="govuk-heading-m">Version 4 (manual additions)
+      {{govukTag({
+        text: "Ready for research",
+        classes: "govuk-!-margin-left-2 govuk-tag--green"
+      })}}
+    </h2>
+
+    <a href="v4/index?list=personal" role="button" draggable="false" class="govuk-button govuk-button--start" data-module="govuk-button">
+      View prototype
+      <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewBox="0 0 33 40" aria-hidden="true" focusable="false">
+        <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z" />
+      </svg>
+    </a>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li><a href="v4/invalid-no-email-confirm">Invalid page (no email provided)</a></li>
+      <li><a href="v4/invalid-confirm">Invalid page (email provided)</a></li>
+    </ul>
+
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+    <h2 class="govuk-heading-m">
+      Version 3 (no unredacted option)
+      {{
+        govukTag({
+          text: "Ready for research",
+          classes: "govuk-!-margin-left-2 govuk-tag--green"
+        })
+      }}
+    </h2>
+
+    <a href="v3/index?list=personal" role="button" draggable="false" class="govuk-button govuk-button--start" data-module="govuk-button">
+      View prototype
+      <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewBox="0 0 33 40" aria-hidden="true" focusable="false">
+        <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z" />
+      </svg>
+    </a>
+
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+    <h2 class="govuk-heading-m">
+      Version 2 (tabbed comment display)
+      {{
+        govukTag({
+          text: "Ready for research",
+          classes: "govuk-!-margin-left-2 govuk-tag--green"
+        })
+      }}
+    </h2>
+
+    <a href="v2/index?list=personal" role="button" draggable="false" class="govuk-button govuk-button--start" data-module="govuk-button">
+      View prototype
+      <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewBox="0 0 33 40" aria-hidden="true" focusable="false">
+        <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z" />
+      </svg>
+    </a>
+
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+    <h2 class="govuk-heading-m">Version 1
+      {{
+        govukTag({
+          text: "Ready for research",
+          classes: "govuk-!-margin-left-2 govuk-tag--green"
+        })
+      }}
+    </h2>
+
+    <a href="v1/index?list=personal" role="button" draggable="false" class="govuk-button govuk-button--start" data-module="govuk-button">
+      View prototype
+      <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewBox="0 0 33 40" aria-hidden="true" focusable="false">
+        <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z" />
+      </svg>
+    </a>
+
+  </div>
+</div>
+
+{% endblock %}

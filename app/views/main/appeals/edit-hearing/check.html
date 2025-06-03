@@ -1,0 +1,101 @@
+{% extends "layouts/bo.html" %}
+
+{% set title = "Check details and update hearing" %}
+{% set pageName = title %}
+
+{% set back = true %}
+
+{% block content %}
+
+  {% set address %}
+    {{appAddress({ address: data.editHearing.address })}}
+  {% endset %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <span class="govuk-caption-l">Appeal {{appeal.id}}</span>
+      <h1 class="govuk-heading-l">{{title}}</h1>
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Date "
+            },
+            value: {
+              html: date | govukDate
+            },
+            actions: {
+              items: [
+                {
+                  href: "/main/appeals/:appealId/edit-hearing" | replace(':appealId', appeal.id),
+                  text: "Change",
+                  visuallyHiddenText: "Date"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Time"
+            },
+            value: {
+              html: date | govukTime
+            },
+            actions: {
+              items: [
+                {
+                  href: "/main/appeals/:appealId/edit-hearing" | replace(':appealId', appeal.id),
+                  text: "Change",
+                  visuallyHiddenText: "Time"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Do you know the address of where the hearing will take place?"
+            },
+            value: {
+              html: 'Yes' if data.editHearing.address else 'No'
+            },
+            actions: {
+              items: [
+                {
+                  href: "/main/appeals/:appealId/edit-hearing/has-address" | replace(':appealId', appeal.id),
+                  text: "Change",
+                  visuallyHiddenText: "whether you know the hearing address"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Address"
+            },
+            value: {
+              html: address
+            },
+            actions: {
+              items: [
+                {
+                  href: "/main/appeals/:appealId/edit-hearing/address" | replace(':appealId', appeal.id),
+                  text: "Change",
+                  visuallyHiddenText: "Address"
+                }
+              ]
+            }
+          } if data.editHearing.address
+        ]
+      }) }}
+
+      <p>We’ll send an email to the appellant and LPA to tell them about the hearing.</p>
+
+      <form method="post">
+        {{ govukButton({
+          text: "Update hearing"
+        }) }}
+      </form>
+
+    </div>
+  </div>
+{% endblock %}

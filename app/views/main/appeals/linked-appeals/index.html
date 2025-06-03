@@ -1,0 +1,66 @@
+{% extends "layouts/bo.html" %}
+
+{% set title = "Linked appeals" %}
+{% set pageName = title %}
+
+{% set back = true %}
+
+{% block beforeContent %}
+   {{ govukBreadcrumbs({
+    classes: 'govuk-!-margin-top-4 govuk-!-margin-bottom-0',
+      items: [
+        {
+          text: appeal.id,
+          href: "/main/appeals/:appealId" | replace(':appealId', appeal.id)
+        },
+        {
+          text: title
+        }
+      ]
+    }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <span class="govuk-caption-l">Appeal {{appeal.id}} {% if appeal.isLeadAppeal %}(lead){% endif %}</span>
+      <h1 class="govuk-heading-l">{{title}}</h1>
+
+      <div class="govuk-button-group">
+        {% if appeal.isLeadAppeal %}
+          <a class="govuk-link" href="/main/appeals/{{appeal.id}}/linked-appeals/new">Add linked appeal</a>
+        {% endif %}
+        <a class="govuk-link" href="/main/appeals/{{appeal.id}}/linked-appeals/edit-lead">Change lead appeal</a>
+      </div>
+
+      {% if linkedAppeals.length %}
+        <div class="app-list">
+          {% for item in linkedAppeals %}
+            <div class="app-list__item">
+              <h2 class="govuk-heading-s govuk-!-margin-bottom-1">
+                <a class="govuk-link--no-visited-state" href="/main/appeals/{{item.id}}">
+                  {{item.id}}
+                </a>
+                {% if item.isLeadAppeal %}
+                  <span class="govuk-!-font-weight-regular">(lead)</span>
+                {% endif %}
+              </h2>
+              <p class="govuk-!-margin-0">{{item.type}}</p>            
+
+              <div class="app-list__actions">
+                <p class="govuk-!-margin-0"><a class="govuk-link--no-visited-state" href="/main/appeals/{{appeal.id}}/linked-appeals/{{item.id}}/delete">
+                  Remove
+                </a>
+                </p>
+              </div>
+            </div>
+          {% endfor %}
+          
+      {% else %}
+        <p>There are no linked appeals.</p>
+      {% endif %}
+
+
+    </div>
+  </div>
+{% endblock %}

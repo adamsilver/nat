@@ -3,5 +3,13 @@
     "@nowprototypeit/govuk",
     "govuk-prototype-kit",
     "govuk-frontend"
-  ]
+  ],
+  "plugin-specific": {
+    "@nowprototypeit/govuk-frontend-adaptor": {
+      "serviceName": "Casework Back Office System - Appeals",
+      "globalGOVUKStyles": true
+    }
+  },
+  "hostingEnabled": true,
+  "editInBrowser": false
 }

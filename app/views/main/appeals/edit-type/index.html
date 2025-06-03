@@ -1,0 +1,96 @@
+{% extends "layouts/bo.html" %}
+
+{% set title = 'Appeal type'  %}
+{% set pageName = title %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+      <form method="post">
+        <span class="govuk-caption-l">Appeal {{appeal.id}} - update appeal type</span>
+        
+
+        {{ govukRadios({
+          name: "editType[type]",
+          fieldset: {
+            legend: {
+              text: title,
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          value: data.editType.type or appeal.type,
+          items: [
+            { 
+              text: 'Enforcement notice',
+              value: 'Enforcement notice'
+            },
+            { 
+              text: 'Householder',
+              value: 'Householder'
+            },
+            { 
+              text: 'Enforcement listed building and conservation area',
+              value: 'Enforcement listed building and conservation area'
+            },
+            { 
+              text: 'Discontinuance notice',
+              value: 'Discontinuance notice'
+            },
+            { 
+              text: 'Advertisement',
+              value: 'Advertisement'
+            },
+            { 
+              text: 'Community infrastructure levy',
+              value: 'Community infrastructure levy'
+            },
+            { 
+              text: 'Planning obligation',
+              value: 'Planning obligation'
+            },
+            { 
+              text: 'Affordable housing obligation',
+              value: 'Affordable housing obligation'
+            },
+            { 
+              text: 'Call-in application',
+              value: 'Call-in application'
+            },
+            { 
+              text: 'Planning',
+              value: 'Planning'
+            },
+            { 
+              text: 'Lawful development certificate',
+              value: 'Lawful development certificate'
+            },
+            { 
+              text: 'Planned listed building and conservation area',
+              value: 'Planned listed building and conservation area'
+            },
+            { 
+              text: 'Commercial planning (CAS)',
+              value: 'Commercial planning (CAS)'
+            },
+            { 
+              text: 'Commercial advertisement (CAS)',
+              value: 'Commercial advertisement (CAS)'
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}

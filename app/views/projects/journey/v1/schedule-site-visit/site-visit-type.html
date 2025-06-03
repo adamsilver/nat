@@ -1,0 +1,57 @@
+{% extends "layouts/PINS.html" %}
+
+{% set pageName="Case officer home" %}
+
+{% set back = false %}
+
+{% block content %}
+
+{{ govukBreadcrumbs({
+  items: [
+    {
+      text: "Case details",
+      href: "#"
+    }
+  ]
+}) }}
+
+<div class="gov govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <span class="govuk-caption-xl">Appeal 2110166</span>
+        <div class="govuk-heading-xl">Select site visit type</div>
+
+        {{ govukRadios({
+            name: "site-visit-type",
+            fieldset: {
+              legend: {
+                isPageHeading: false,
+                classes: "govuk-fieldset__legend--l"
+              }
+            },
+            items: [
+              {
+                value: "Unaccompanied",
+                text: "Unaccompanied"
+              },
+              {
+                value: "Access required",
+                text: "Access required"
+              },
+              {
+                value: "Accompanied",
+                text: "Accompanied"
+              }
+            ]
+          }) }}
+
+          {{ govukButton({
+            text: "Continue"
+          }) }}
+
+
+
+
+    </div>
+</div>
+
+{% endblock %}

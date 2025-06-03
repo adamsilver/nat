@@ -1,0 +1,82 @@
+{% extends "layouts/bo.html" %}
+
+{% set title = 'Check details and reject interested party comment'  %}
+{% set pageName = title %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+  text: "Back",
+  href: 'javascript:history.back()'
+}) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+      <span class="govuk-caption-l">Appeal {{appeal.id}} - {{comment.firstName}} {{comment.lastName}}</span>
+      <h1 class="govuk-heading-l">
+        {{title}}
+      </h1>
+
+      {% set reasonsHtml %}
+        <ul class="govuk-list govuk-list--bullet">
+          {% for item in data.rejectInterestedPartyComment.reason %}
+            <li>
+              {{item}}
+              {# {% if item == 'Other reason' %}
+                - {{data.new.otherObject}}
+              {% endif %} #}
+            </li>
+          {% endfor %}
+        </ul>
+      {% endset %}
+
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Reason for rejecting the interested party comment"
+            },
+            value: {
+              html: reasonsHtml
+            },
+            actions: {
+              items: [
+                {
+                  href: '/main/appeals/:appealId/interested-party-comments/:commentId/reject' | replace(':appealId', appeal.id) | replace(':commentId', comment.id),
+                  text: "Change",
+                  visuallyHiddenText: "Item label"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Do you want to allow the Rule 6 party to submit a new statement?"
+            },
+            value: {
+              html: data.rejectInterestedPartyComment.canResubmit
+            },
+            actions: {
+              items: [
+                {
+                  href: '/main/appeals/:appealId/interested-party-comments/:commentId/reject/can-resubmit' | replace(':appealId', appeal.id) | replace(':commentId', comment.id),
+                  text: "Change",
+                  visuallyHiddenText: "Item label"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+      <p>We’ll send an email to the interested party to explain why you rejected their comment.</p>
+
+      <form method="post">
+        {{ govukButton({
+          text: "Reject interested party comment"
+        }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}

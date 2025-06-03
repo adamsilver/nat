@@ -1,0 +1,22 @@
+{#
+For guidance on how to use layouts see:
+https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
+#}
+
+{% extends "layouts/main.html" %}
+
+{# Overrides the GOVUK standard header
+	 with a PINs back office header #}
+
+{% block header %}
+	{% include "includes/PINS-header-simple.html" %}
+{% endblock %}
+
+{% block pageScripts %}
+  {{ super() }}
+  <script>
+    var App = {}
+  </script>
+  <script src="/public/javascripts/components/add-another.js"></script>
+  <script src="/public/javascripts/components/filter-toggle-button.js"></script>
+{% endblock %}

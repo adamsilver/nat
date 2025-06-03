@@ -1,0 +1,152 @@
+{% extends "layouts/bo.html" %}
+
+
+{% set title = comment.firstName + ' ' + comment.lastName %}
+
+{% set pageName = title %}
+
+{% block beforeContent %}
+  {{ govukBreadcrumbs({
+    classes: 'govuk-!-margin-top-4 govuk-!-margin-bottom-0',
+      items: [
+        {
+          text: appeal.id,
+          href: "/main/appeals/:appealId" | replace(':appealId', appeal.id)
+        },
+        {
+          text: "Interested party comments",
+          href: "/main/appeals/:appealId/interested-party-comments" | replace(':appealId', appeal.id)
+        },
+        {
+          text: title
+        }
+      ]
+    }) }}
+{% endblock %}
+
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {{ govukNotificationBanner({
+        type: "success",
+        text: flash
+      }) if flash.length }}
+
+      <span class="govuk-caption-l">Appeal {{appeal.id}}</span>
+      <h1 class="govuk-heading-l">
+        {{title}}
+        {{ govukTag({
+          text: comment.status,
+          classes: ''+ comment.status | interestedPartyCommentStatusColour
+        }) }}
+      </h1>
+
+      {% if comment.status == 'Ready to review' %}
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Accept",
+            href: '/main/appeals/:appealId/interested-party-comments/:commentId/accept' | replace(':appealId', appeal.id) | replace(':commentId', comment.id)
+          })}}
+          {{ govukButton({
+            text: "Redact and accept",
+            classes: 'govuk-button--secondary',
+            href: '/main/appeals/:appealId/interested-party-comments/:commentId/redact' | replace(':appealId', appeal.id) | replace(':commentId', comment.id)
+          })}}
+          {{ govukButton({
+            text: "Reject",
+            classes: 'govuk-button--secondary',
+            href: '/main/appeals/:appealId/interested-party-comments/:commentId/reject' | replace(':appealId', appeal.id) | replace(':commentId', comment.id)
+          })}}
+          <a class="govuk-link" href="/main/appeals/{{appeal.id}}/interested-party-comments/{{comment.id}}/withdraw">Withdraw</a>
+        </div>
+      
+      {% endif %}
+
+
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "First name"
+            },
+            value: {
+              text: comment.firstName
+            },
+            actions: {
+              items: [
+                {
+                  href: '/main/appeals/:appealId/interested-party-comment/:commentId/name/edit' | replace(':appealId', appeal.id) | replace(':commentId', comment.id),
+                  text: "Change",
+                  visuallyHiddenText: "first name"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Last name"
+            },
+            value: {
+              text: comment.lastName
+            },
+            actions: {
+              items: [
+                {
+                  href: '/main/appeals/:appealId/interested-party-comment/:commentId/name/edit' | replace(':appealId', appeal.id) | replace(':commentId', comment.id),
+                  text: "Change",
+                  visuallyHiddenText: "first name"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Email address"
+            },
+            value: {
+              text: comment.emailAddress
+            },
+            actions: {
+              items: [
+                {
+                  href: '/main/appeals/:appealId/interested-party-comment/:commentId/edit/email-address' | replace(':appealId', appeal.id) | replace(':commentId', comment.id),
+                  text: "Change",
+                  visuallyHiddenText: "Email address"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Comment"
+            },
+            value: {
+              html: comment.comment
+            }
+          },
+          {
+            key: {
+              text: "Supporting documents"
+            },
+            value: {
+              html: 'Not provided'
+            },
+            actions: {
+              items: [
+                {
+                  href: '/main/appeals/:appealId/interested-party-comment/:commentId/edit/docs' | replace(':appealId', appeal.id) | replace(':commentId', comment.id),
+                  text: "Change",
+                  visuallyHiddenText: "Support documents"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+    </div>
+  </div>
+{% endblock %}

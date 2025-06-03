@@ -1,0 +1,84 @@
+{% extends "layouts/bo.html" %}
+
+{% set title = "Address" %}
+{% set pageName = title %}
+
+{% set back = true %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form method="post">
+        <span class="govuk-caption-l">Appeal {{appeal.id}} - update hearing</span>
+        {% call govukFieldset({
+          legend: {
+            text: title,
+            classes: "govuk-fieldset__legend--l"
+          }
+        }) %}
+
+          {{ govukInput({
+            id: "address-line-1",
+            name: "editHearing[address][line1]",
+            label: {
+              text: "Address line 1"
+            },
+            value: hearingAddress.line1,
+            autocomplete: "address-line1"
+          }) }}
+
+          {{ govukInput({
+            id: "address-line-2",
+            name: "editHearing[address][line2]",
+            label: {
+              text: "Address line 2 (optional)"
+            },
+            value: hearingAddress.line2,
+            autocomplete: "address-line2"
+          }) }}
+
+          {{ govukInput({
+            id: "address-town",
+            name: "editHearing[address][town]",
+            label: {
+              text: "Town or city"
+            },
+            value: hearingAddress.town,
+            autocomplete: "address-level2",
+            classes: "govuk-!-width-two-thirds"
+          }) }}
+
+          {{ govukInput({
+            id: "address-county",
+            name: "editHearing[address][county]",
+            label: {
+              text: "County (optional)"
+            },
+            value: hearingAddress.county,
+            classes: "govuk-!-width-two-thirds"
+          }) }}
+
+          {{ govukInput({
+            id: "address-postcode",
+            name: "editHearing[address][postcode]",
+            label: {
+              text: "Postcode"
+            },
+            value: hearingAddress.postcode,
+            autocomplete: "postal-code",
+            classes: "govuk-input--width-10"
+          }) }}
+
+        {% endcall %}
+
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+
+    </div>
+  </div>
+{% endblock %}

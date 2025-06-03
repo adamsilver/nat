@@ -1,0 +1,55 @@
+ 
+{% extends "layouts/PINS-post-mvp.html" %}
+
+{% if data['party'] == 'LPA' %}
+  {% set title = "Confirm LPA's final comments" %}
+{% else  %}
+  {% set title = "Confirm appellant's final comments" %}
+{% endif %}
+ 
+{% set pageName = title + ' - Planning Inspectorate'%} 
+{% block content %}
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+    </div>
+    </div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+   <span class="govuk-caption-l">Appeal 2110166</span>
+        <h1 class="govuk-heading-l">{{title}}</h1>
+      
+       <section class="long-answers">
+         <p class="govuk-inset-text">  
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut at nunc mi. Donec maximus risus nec interdum vestibulum. Cras laoreet vestibulum bibendum. Cras lectus nulla. 
+          Nam interdum lorem sed lacus feugiat faucibus in vitae tellus. Aliquam erat volutpat. Donec aliquam tincidunt vehicula. Vivamus id elit ac libero rhoncus pulvinar. Etiam blandit posuere elit id rhoncus. 
+          Mauris nulla erat, posuere ut nisi vitae, pulvinar gravida arcu. 
+         </p>
+        </section>
+            
+
+    </div>
+  </div>
+ 
+ 
+
+    <form action="redact-supporting-documents" method="post" class="" novalidate>
+ 
+      <div class="govuk-button-group">
+      {{ govukButton({
+        text: "Confirm"
+      }) }}
+   
+      <a href="redact-comment" class="govuk-button govuk-button--secondary">Redact again</a><br>
+  
+    
+      </div>
+
+    </form>
+
+ 
+
+
+{% endblock %}

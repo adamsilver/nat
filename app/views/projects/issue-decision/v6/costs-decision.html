@@ -1,0 +1,118 @@
+{% extends "layouts/PINS.html" %}
+
+{% set pageName="Decision date" %}
+
+{% set title = "Who has applied for costs?" %}
+
+{% block content %}
+
+ <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+  <span class="govuk-caption-l">
+    Appeal 2110166
+  </span>
+
+  <!-- {{ govukTag({
+    text: "Issue determination",
+    classes: "govuk-tag--pink govuk-!-margin-bottom-6"
+  })}} -->
+
+<!-- </div>
+<div class="govuk-grid-column-full">
+
+  {% include "../v3/includes/case-meta-data.html" %}
+  <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+</div>
+<div class="govuk-grid-column-two-thirds"> -->
+
+  <form action="costs-decision" method="post">
+{% set html %}
+  {% if data ['costs-appellant'] === "yes" %}
+      {% if data ['costs-appellant'] === "yes" and data ['costs-lpa'] === "no" %}
+        Costs applied for by the appellant
+      {% endif %}
+      {% if data ['costs-appellant'] === "yes" and data ['costs-lpa'] === "yes" %}
+        Costs applied for by the both parties
+      {% else %}
+        Costs applied for by the appellant
+      {% endif %}
+  {% elseif data ['costs-lpa'] === "yes" %}
+      {% if data ['costs-appellant'] === "no" and data ['costs-lpa'] === "yes" %}
+        Costs applied for by the LPA
+      {% else %}
+        Costs applied for by the appellant
+      {% endif %}
+  {% else %}
+        Costs not applied for
+  {% endif %}
+  
+{% endset %} -->
+
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+
+{% if data ['costs-appellant'] === "yes" or data ['costs-lpa'] === "yes" %}
+  {{ govukRadios({
+    name: "costs-awarded",
+    fieldset: {
+      legend: {
+        text: "Have you awarded costs?",
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--l"
+      }
+    },
+      hint: {
+      html: html
+      },
+    items: [
+      {
+        value: "Awarded~costs-upload",
+        text: "Yes"
+      },
+      {
+        value: "Not awarded~costs-upload",
+        text: "No"
+      }
+    ]
+  }) }}
+{% else %}
+
+
+    {{ govukRadios({
+    name: "costs-awarded",
+    fieldset: {
+      legend: {
+        text: "Have you awarded costs?",
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--l"
+      }
+    },
+      hint: {
+      text: "Costs not applied for"
+      },
+    items: [
+      {
+        value: "Awarded~costs-upload",
+        text: "Yes"
+      },
+      {
+        value: "Not awarded~check-your-answers",
+        text: "No"
+      }
+    ]
+  }) }}
+
+{% endif %}  
+  
+</fieldset>
+</div>
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+  </form>
+
+</div></div>
+{% endblock %}

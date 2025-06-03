@@ -1,0 +1,66 @@
+{% extends "layouts/bo.html" %}
+
+{% set title = "Inquiry estimates" %}
+{% set pageName = title %}
+
+{% set back = true %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form method="post">
+        <span class="govuk-caption-l">Appeal {{appeal.id}}</span>
+        <h1 class="govuk-heading-l">{{title}}</h1>
+
+        {{ govukInput({
+          id: "estimatedPreparationTime",
+          name: "addInquiryEstimates[estimatedPreparationTime]",
+          label: {
+            text: "Estimated preparation time",
+            classes: 'govuk-label--m'
+          },
+          value: data.addInquiryEstimates.estimatedPreparationTime,
+          classes: "govuk-input--width-4",
+          suffix: {
+            text: "days"
+          }
+        }) }}
+
+        {{ govukInput({
+          id: "estimatedInquiryTime",
+          name: "addInquiryEstimates[estimatedInquiryTime]",
+          label: {
+            text: "Estimated sitting time",
+            classes: 'govuk-label--m'
+          },
+          value: data.addInquiryEstimates.estimatedInquiryTime,
+          classes: "govuk-input--width-4",
+          suffix: {
+            text: "days"
+          }
+        }) }}
+
+        {{ govukInput({
+          id: "estimatedReportingTime",
+          name: "addInquiryEstimates[estimatedReportingTime]",
+          label: {
+            text: "Estimated reporting time",
+            classes: 'govuk-label--m'
+          },
+          value: data.addInquiryEstimates.estimatedReportingTime,
+          classes: "govuk-input--width-4",
+          suffix: {
+            text: "days"
+          }
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+
+    </div>
+  </div>
+{% endblock %}

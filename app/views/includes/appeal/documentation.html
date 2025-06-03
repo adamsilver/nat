@@ -1,0 +1,166 @@
+<div class="app-panel">
+  <h2 class="govuk-heading-l">Documentation</h2>
+
+  {{ govukSummaryList({
+    rows: [
+      {
+        key: {
+          text: "Appeal"
+        },
+        value: {
+          html: 'Valid<br><span class="govuk-!-font-size-16">Received on 2 February 2025</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: "/main/appeals/:appealId/appeal-form" | replace(':appealId', appeal.id),
+              text: "View",
+              visuallyHiddenText: "Appeal"
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          text: "LPA questionnaire"
+        },
+        value: {
+          html: 'Complete<br><span class="govuk-!-font-size-16">Received on 7 February 2025</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: "/main/appeals/:appealId/lpaq" | replace(':appealId', appeal.id),
+              text: "View",
+              visuallyHiddenText: "LPA questionnaire"
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          text: "LPA statement"
+        },
+        value: {
+          html: 'Accepted<br><span class="govuk-!-font-size-16">Received on 7 February 2025</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: "#",
+              text: "View",
+              visuallyHiddenText: "LPA statement"
+            }
+          ]
+        }
+      } if appeal.lpaStatement,
+      {
+        key: {
+          text: "Interested party comments"
+        },
+        value: {
+          html: appeal.interestedPartyComments.length + ' comments<br><span class="govuk-!-font-size-16">Received on 7 February 2025</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: '/main/appeals/:appealId/interested-party-comments' | replace(':appealId', appeal.id),
+              text: "View",
+              visuallyHiddenText: "Interested party comments"
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          text: "Appellant final comments"
+        },
+        value: {
+          html: 'Accepted<br><span class="govuk-!-font-size-16">Received on 7 February 2025</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: "#",
+              text: "View",
+              visuallyHiddenText: "Appellant final comments"
+            }
+          ]
+        }
+      } if appeal.procedure == 'Written representations' and not appeal.isChildAppeal,
+      {
+        key: {
+          text: "LPA final comments"
+        },
+        value: {
+          html: 'Accepted<br><span class="govuk-!-font-size-16">Received on 7 February 2025</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: "#",
+              text: "View",
+              visuallyHiddenText: "LPA final comments"
+            }
+          ]
+        }
+      } if appeal.procedure == 'Written representations' and not appeal.isChildAppeal,
+      {
+        key: {
+          text: "Environmental services team review"
+        },
+        value: {
+          html: '2 documents<br><span class="govuk-!-font-size-16">Received on 7 February 2025</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: "#",
+              text: "Add",
+              visuallyHiddenText: "Environmental services team review"
+            },
+            {
+              href: "#",
+              text: "Change",
+              visuallyHiddenText: "Environmental services team review"
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          text: "Rule 6 statements"
+        },
+        value: {
+          html: rule6Statements.length + ' statements'
+        },
+        actions: {
+          items: [
+            {
+              href: '/main/appeals/:appealId/rule-6-statements' | replace(':appealId', appeal.id),
+              text: "Change",
+              visuallyHiddenText: "Decision"
+            }
+          ]
+        } if not appeal.isChildAppeal
+      } if appeal.procedure == 'Inquiry',
+      {
+        key: {
+          text: "Rule 6 proof of evidence and witnesses"
+        },
+        value: {
+          html: rule6ProofOfEvidenceAndWitnesses.length + ' documents'
+        },
+        actions: {
+          items: [
+            {
+              href: '/main/appeals/:appealId/rule-6-proof-of-evidence-and-witnesses' | replace(':appealId', appeal.id),
+              text: "Change",
+              visuallyHiddenText: "Rule 6 proof of evidence and witnesses"
+            }
+          ]
+        } if not appeal.isChildAppeal
+      } if appeal.procedure == 'Inquiry'
+    ]
+  }) }}
+</div>

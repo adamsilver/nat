@@ -1,0 +1,463 @@
+{% extends "layouts/PINS-admin-post-mvp.html" %}
+
+{% set title = "S78 / full appeals" %}
+{% set pageName = title + ' - Planning Inspectorate'%}
+{% set pageId = 's78' %}
+
+{% set back = false %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-quarter">
+      <ul class="govuk-list govuk-list-bullet">
+        <li><a href="#common" class="govuk-link--no-visited-state govuk-link--no-underline">Common</a></li>
+        <li><a href="#written-reps" class="govuk-link--no-visited-state govuk-link--no-underline">Written representations</a></li>
+        <li><a href="#hearings" class="govuk-link--no-visited-state govuk-link--no-underline">Hearings and inquiries</a></li>
+        <li><a href="#spikes" class="govuk-link--no-visited-state govuk-link--no-underline">Design spikes</a></li>
+        <!-- <li><a href="#dev" class="govuk-link--no-visited-state govuk-link--no-underline">Ready for development</a></li> -->
+      </ul>
+    </div>
+
+    <div class="govuk-grid-column-three-quarters">
+      <h1 class="govuk-heading-xl">
+        {{ title }}
+      </h1>
+
+      <!-- common elements -->
+      <section id="common">
+
+        <h2 class="govuk-heading-m">
+          Common
+        </h2>
+
+        {{ govukTable({
+          firstCellIsHeader: true,
+          head: [
+            {
+              text: "Name",
+              classes: "govuk-!-width-one-half"
+            },
+            {
+              text: "Tickets"
+            },
+            {
+              text: "Related docs",
+              classes: "govuk-!-width-one-third"
+            }
+          ],
+          rows: [
+            [
+              {
+               html: "<a href='projects/files'>Displaying and managing files</a>"
+              },
+              {
+               html: ""
+              },
+              {
+               html: ""
+              }
+            ],
+            [
+              {
+               html: "<a href='projects/lpa-s78-questionnaire'>LPA s78 questionnaire</a>"
+              },
+              {
+               html: "<a href='https://pins-ds.atlassian.net/browse/BDPAR-53'>BDPAR-53</a><br>
+                      <a href='https://pins-ds.atlassian.net/browse/A2-785'>A2-785</a>"
+              },
+              {
+               html: "<a href='https://app.mural.co/t/allpins6990/m/allpins6990/1702651157679/883be1da8fb088275268beebf4f42f413ce18aef'>Design thinking (Mural)</a>"
+              }
+            ],
+            [
+              {
+                html: "<a href='projects/case-details/'>Case detail and appeal stages</a>"
+              },
+              {
+                html: ""
+              },
+              {
+                html: "<a href='https://app.mural.co/t/allpins6990/m/boatpostmvp4564/1700582094305/b35348d74846282381305f967ebbf8c646ed29bf?wid=0-1720009160581'>Screens (Mural)</a>"
+              }
+            ],
+            [
+              {
+                html: "<a href='projects/ip-comments/'>Interested party comments</a>"
+              },
+              {
+                html: "<a href='https://pins-ds.atlassian.net.mcas.ms/browse/BDPAR-16?McasTsid=20596&McasCtx=4'>BDPAR-16</a><br>
+                       <a href='https://pins-ds.atlassian.net/browse/BDPAR-88'>BDPAR-88</a><br>
+                       <a href='https://pins-ds.atlassian.net/browse/BDPAR-145'>BDPAR-145</a><br>
+                       <a href='https://pins-ds.atlassian.net/browse/BDPAR-146'>BDPAR-146</a>"
+              },
+              {
+                html: "<a href='https://app.mural.co/t/allpins6990/m/allpins6990/1702651157679/883be1da8fb088275268beebf4f42f413ce18aef'>Early design thinking (Mural)</a><br>
+                       <a href='https://app.mural.co/t/allpins6990/m/allpins6990/1715937305704/97f27a5190a8e5185d1773726117df88e2536c78?sender=ucdc79e79d5de0dae79845426'>Journey screens</a><br>
+                       <a href='https://app.mural.co/t/allpins6990/m/allpins6990/1718783313564/7acc2e3ccad21de88cea06532f10658501457c2c?wid=0-1718887416782'>Wireframes</a>"
+              }
+            ],
+            [
+              {
+                html: "<a href='projects/cross-copy/'>Sharing evidence (cross-copying)</a>"
+              },
+              {
+                html: "<a href='https://pins-ds.atlassian.net.mcas.ms/browse/BDPAR-27'>BDPAR-27</a>"
+              },
+              {
+                html: ""
+              }
+            ],
+            [
+              {
+                html: "<a href='projects/redaction/'>Redaction</a>"
+              },
+              {
+                html: ""
+              },
+              {
+                html: ""
+              }
+            ],
+            [
+              {
+                html: "<a href='projects/lpa-statement/'>LPA statement</a>"
+              },
+              {
+                html: "<a href='https://pins-ds.atlassian.net.mcas.ms/browse/BDPAR-1'>BDPAR-1</a>"
+              },
+              {
+                html: "<a href='https://app.mural.co/t/allpins6990/m/boatpostmvp4564/1700582094305/b35348d74846282381305f967ebbf8c646ed29bf?wid=632-1718191974588'>MVP Mural</a>"
+              }
+            ],
+            [
+              {
+                html: "<a href='projects/planning-obligation/'>Planning obligation</a>"
+              },
+              {
+                html: "<a href='https://pins-ds.atlassian.net.mcas.ms/browse/BDPAR-18'>BDPAR-18</a>"
+              },
+              {
+                html: "<a href='https://app.mural.co/t/allpins6990/m/boatpostmvp4564/1700582094305/b35348d74846282381305f967ebbf8c646ed29bf?wid=0-1707835679282'>MVP Mural</a>"
+              }
+            ],
+            [
+              {
+                html: "<a href='projects/slip-rules/'>Slip rules</a>"
+              },
+              {
+                html: "<a href='https://pins-ds.atlassian.net/browse/A2-160'>A2-160</a>"
+              },
+              {
+                html: "<a href='https://app.mural.co/t/allpins6990/m/allpins6990/1744206843193/84faf55c0b467a833138b5b43fcb766d080d1011'>Slip rules Mural</a>"
+              }
+            ]
+          ]
+        }) }}
+
+      </section>
+
+      <!-- written representations elements -->
+      <section id="written-reps">
+
+        <h2 class="govuk-heading-m">
+          Written representations
+        </h2>
+
+        {{ govukTable({
+          firstCellIsHeader: true,
+          head: [
+            {
+              text: "Name",
+              classes: "govuk-!-width-one-half"
+            },
+            {
+              text: "Tickets"
+            },
+            {
+              text: "Related docs",
+              classes: "govuk-!-width-one-third"
+            }
+          ],
+          rows: [
+            [
+              {
+                html: "<a href='projects/written-case-overview/'>Written case overview</a>"
+              },
+              {
+                html: "<a href='https://pins-ds.atlassian.net.mcas.ms/browse/BDPAR-11'>BDPAR-11</a>"
+              },
+              {
+                html: "<a href='https://app.mural.co/t/allpins6990/m/boatpostmvp4564/1700582094305/b35348d74846282381305f967ebbf8c646ed29bf?wid=0-1701776600627'>MVP Mural</a>"
+              }
+            ],
+            [
+              {
+                html: "<a href='projects/final-comments/'>Final comments (LPA / Appellant)</a> "
+              },
+              {
+                html: "<a href='https://pins-ds.atlassian.net.mcas.ms/browse/BDPAR-15'>BDPAR-15</a> and <a href='https://pins-ds.atlassian.net.mcas.ms/browse/BDPAR-17'>17</a>"
+              },
+              {
+                html: "<a href='https://app.mural.co/t/allpins6990/m/boatpostmvp4564/1700582094305/b35348d74846282381305f967ebbf8c646ed29bf?wid=22-1704802353949'>MVP Mural</a>"
+              }
+            ]
+          ]
+        }) }}
+
+      </section>
+
+      <!-- hearings and inquiry elements -->
+      <section id="hearings">
+
+        <h2 class="govuk-heading-m">
+          Hearings and inquiries
+        </h2>
+
+        {{ govukTable({
+          firstCellIsHeader: true,
+          head: [
+            {
+              text: "Name",
+              classes: "govuk-!-width-one-half"
+            },
+            {
+              text: "Tickets"
+            },
+            {
+              text: "Related docs",
+              classes: "govuk-!-width-one-third"
+            }
+          ],
+          rows: [
+            [
+              {
+                html: "<a href='projects/inquiry-case-overview/'>Hearing case overview</a>"
+              },
+              {
+                html: "<a href='https://pins-ds.atlassian.net.mcas.ms/browse/BDPAR-47'>BDPAR-47</a>"
+              },
+              {
+                html: "<a href='https://app.mural.co/t/allpins6990/m/boatpostmvp4564/1700582094305/b35348d74846282381305f967ebbf8c646ed29bf?wid=103-1700582560005'>MVP Mural</a>"
+              }
+            ],
+            [
+              {
+                html: "<a href='projects/inquiry-case-overview/'>Inquiry case overview</a>"
+              },
+              {
+                html: "<a href='https://pins-ds.atlassian.net.mcas.ms/browse/BDPAR-48'>BDPAR-48</a>"
+              },
+              {
+                html: "<a href='https://app.mural.co/t/allpins6990/m/boatpostmvp4564/1700582094305/b35348d74846282381305f967ebbf8c646ed29bf?wid=111-1705658244828'>MVP Mural</a>"
+              }
+            ],
+            [
+              {
+                html: "<a href='projects/rule6-parties/'>Managing Rule 6 parties</a>"
+              },
+              {
+                html: ""
+              },
+              {
+                html: ""
+              }
+            ],
+            [
+              {
+                html: "<a href='projects/rule-6-statements/'>Reviewing Rule 6 statements</a>"
+              },
+              {
+                html: "<a href='https://pins-ds.atlassian.net/browse/A2-1548'>A2-1548</a>"
+              },
+              {
+                html: ""
+              }
+            ],
+            [
+              {
+                html: "<a href='projects/review-proof-of-evidence-and-witnesses/'>Review proof of evidence and witnesses</a>"
+              },
+              {
+                html: "<a href='https://pins-ds.atlassian.net/browse/A2-1691'>A2-1691</a>"
+              },
+              {
+                html: "<a href='https://pins-ds.atlassian.net/wiki/spaces/BO/pages/1726644225/Epic+-+Proofs+of+Evidence+and+Witnesses+including+timings'>Epic - Proofs of Evidence and Witnesses (including timings) on Confluence</a>"
+              }
+            ]
+          ]
+        }) }}
+
+      </section>
+
+      <!-- hearings and inquiry elements -->
+      <section id="hearings">
+
+        <h2 class="govuk-heading-m">
+          Cross-appeal
+        </h2>
+
+        {{ govukTable({
+          firstCellIsHeader: true,
+          head: [
+            {
+              text: "Name",
+              classes: "govuk-!-width-one-half"
+            },
+            {
+              text: "Tickets"
+            },
+            {
+              text: "Related docs",
+              classes: "govuk-!-width-one-third"
+            }
+          ],
+          rows: [
+            [
+              {
+                html: "<a href='projects/change-procedure/'>Change appeal procedure</a>"
+              },
+              {
+                html: "<a href='https://pins-ds.atlassian.net/browse/A2-48'>A2-48</a>"
+              },
+              {
+                html: "<a href='https://app.mural.co/t/allpins6990/m/allpins6990/1722515675950/ddc8c6bb809cd3955d5602bfed1519179112a859?sender=ucdc79e79d5de0dae79845426'>MVP Mural</a>"
+              }
+            ],
+            [
+              {
+                html: "<a href='projects/start-full-case/'>Start S78 case and choose appeal procedure</a>"
+              },
+              {
+                html: "<a href='https://pins-ds.atlassian.net/browse/A2-56'>A2-56</a>"
+              },
+              {
+                html: ""
+              }
+            ],
+            [
+              {
+                html: "<a href='projects/redetermination-stage-1/'>Redetermination stage 1 - reopen a case</a>"
+              },
+              {
+                html: "<a href='https://pins-ds.atlassian.net/browse/A2-121'>A2-121</a>"
+              },
+              {
+                html: "<a href='https://app.mural.co/t/allpins6990/m/allpins6990/1723732219973/3294b86c2d55ea974e1d6a817cb267347000ed05?sender=ucdc79e79d5de0dae79845426'>S78 - Redetermination journey</a>"
+              }
+            ],
+            [
+              {
+                html: "<a href='projects/redetermination-stage-2/'>Redetermination stage 2 - review new evidence</a>"
+              },
+              {
+                html: "<a href='https://pins-ds.atlassian.net/browse/A2-121'>A2-121</a>"
+              },
+              {
+                html: "<a href='https://app.mural.co/t/allpins6990/m/allpins6990/1723732219973/3294b86c2d55ea974e1d6a817cb267347000ed05?sender=ucdc79e79d5de0dae79845426'>S78 - Redetermination journey</a>"
+              }
+            ],
+            [
+              {
+                html: "<a href='projects/redetermination-stage-2-final-comments-review/'>Redetermination stage 2 - final comments review</a>"
+              },
+              {
+                html: "<a href='https://pins-ds.atlassian.net/browse/A2-121'>A2-121</a>"
+              },
+              {
+                html: "<a href='https://app.mural.co/t/allpins6990/m/allpins6990/1723732219973/3294b86c2d55ea974e1d6a817cb267347000ed05?sender=ucdc79e79d5de0dae79845426'>S78 - Redetermination journey</a>"
+              }
+            ]
+          ]
+        }) }}
+
+      </section>
+
+      <!-- design spikes -->
+      <h2 class="govuk-heading-m" id="spikes">
+        Layouts, views, patterns
+      </h2>
+
+      <p class="govuk-body">This section includes isolated layouts, app views or patterns. These help expand the scope of data work from HAS to S78, and they are designed upon the previous research. Therea re no new user journeys.</p>
+      {{ govukTable({
+        firstCellIsHeader: true,
+        head: [
+          {
+            text: "Name",
+            classes: "govuk-!-width-one-half"
+          }
+        ],
+        rows: [
+          [
+            {
+              html: "<a class='govuk-link' href='projects/review-evidence-1/'>
+                       Review supporting documents
+                     </a>"
+            }
+          ],
+          [
+            {
+              html: "<a class='govuk-link' href='projects/review-evidence-2/'>
+                       Review text with supporting documents
+                     </a>"
+            }
+          ],
+          [
+            {
+              html: "<a class='govuk-link' href='projects/s78-timetable/'>Appeal timetable</a>"
+            }
+          ]
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-m" id="spikes">
+        Design spikes
+      </h2>
+
+      {{ govukTable({
+        firstCellIsHeader: true,
+        head: [
+          {
+            text: "Name",
+            classes: "govuk-!-width-one-half"
+          }
+        ],
+        rows: [
+          [
+            {
+              html: "<a class='govuk-link' href='projects/case-details-experiment/'>Early case details exploration</a>"
+            }
+          ]
+        ]
+      }) }}
+
+  	  <!-- <h2 class="govuk-heading-m" id="dev">
+        Ready for development
+      </h2>
+
+      <p>
+        Features that have been refined and are ready to be developed. These prototypes should not change unless a fix is needed or the requirments change.
+      </p>
+
+      {{ govukTable({
+        firstCellIsHeader: true,
+        head: [
+          {
+            text: "Name"
+          },
+          {
+            text: "Tickets"
+          },
+          {
+            text: "Related docs"
+          }
+        ],
+        rows: [
+
+        ]
+      }) }} -->
+
+    </div>
+  </div>
+
+{% endblock %}
