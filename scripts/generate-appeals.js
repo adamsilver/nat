@@ -584,7 +584,7 @@ const generateAppeals = () => {
 
   let status12 = 'Awaiting inquiry'
   let interestedPartyComments = [] 
-  for(let i = 0; i < 32; i++) {
+  for(let i = 0; i < 22; i++) {
     interestedPartyComments.push(generateInterestedPartyComment({ appealStatus: status12 }))
   }
 
